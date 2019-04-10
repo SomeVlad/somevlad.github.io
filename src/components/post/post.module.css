@@ -1,0 +1,8 @@
+.root {
+    max-width: 50%;
+    position: relative;
+}
+
+.root img {
+    max-width: 100%;
+}
