@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './post.module.css'
+import styles from './style.module.css'
 
 function Post({ content, title }) {
     const html = content.rendered
