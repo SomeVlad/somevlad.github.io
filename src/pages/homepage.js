@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Endpoints } from 'endpoints/endpoints'
-import { posts as mockPosts } from 'mocks/posts'
-import { Post } from 'components/post'
+import React, { Component } from 'react'
+import { Header, Post } from 'components'
 
-function Home() {
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        axios
-            .get(Endpoints.posts)
-            .then(result => setData(result.data))
-            .catch(() => setData(mockPosts))
-
-    }, [])
-
-    return (
-        <div>
-            {data.map(Post)}
-        </div>
-    )
+class Home extends Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                {this.props.data.map(Post)}
+            </div>
+        )
+    }
 }
 
 export { Home }
