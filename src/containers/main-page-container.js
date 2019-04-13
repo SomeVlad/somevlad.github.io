@@ -1,35 +1,16 @@
-import React, { Component } from 'react'
-import * as PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
-import { Post } from 'components/post'
+import { Header, Posts } from 'components'
 
-class MainPageContainer extends Component {
-    static propTypes = {
-        posts: PropTypes.array,
-        getPosts: PropTypes.func
-    }
-
-    static defaultProps = {
-        posts: []
-    }
-
-    componentDidMount() {
-        this.props.getPosts()
-    }
-
-    render() {
-        const { posts } = this.props
-        if (posts.length === 0) {
-            return 'loading...'
-        }
-        return (
-            <div>
-                {posts.map(Post)}
-            </div>
-        )
-    }
-}
+const MainPage = ({ posts, getPosts }) => (
+    <Fragment>
+        <Header />
+        <Posts
+            posts={posts}
+            getPosts={getPosts} />
+    </Fragment>
+)
 
 const mapStateToProps = ({ posts }) => ({
     posts
@@ -42,4 +23,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MainPageContainer)
+)(MainPage)
