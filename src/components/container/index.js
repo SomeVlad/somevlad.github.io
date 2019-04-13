@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Home } from 'pages/homepage'
+import { simpleAction } from 'actions/simpleAction'
 
-function App() {
-    return (
-        <Router>
-            <div>
-                <Header />
+class App extends Component {
+    render() {
+        const { simpleAction } = this.props
+        return (
+            <Router>
+                <div>
+                    <Header simpleAction={simpleAction} />
 
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
-                <Route path="/tag" component={Tags} />
-            </div>
-        </Router>
-    )
+                    <Route exact path="/" component={Home} />
+                    <Route path="/about" component={About} />
+                    <Route path="/tag" component={Tags} />
+                </div>
+            </Router>
+        )
+    }
 }
 
 function About() {
@@ -48,7 +53,7 @@ function Tags({ match }) {
     )
 }
 
-function Header() {
+function Header({ simpleAction }) {
     return (
         <ul>
             <li>
@@ -63,8 +68,14 @@ function Header() {
             <li>
                 <Link to="/tag/javascript">javascript</Link>
             </li>
+            <button onClick={simpleAction}>Test redux action</button>
         </ul>
     )
 }
 
-export default App
+const mapStateToProps = state => ({ ...state })
+const mapDispatchToProps = dispatch => ({
+    simpleAction: () => dispatch(simpleAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
