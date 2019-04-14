@@ -23,7 +23,13 @@ class Posts extends Component {
         }
         return (
             <div>
-                {posts.map(Post)}
+                {posts.map(({ title, content }, index) => (
+                        <Post
+                            key={index}
+                            title={title}
+                            content={content} />
+                    )
+                )}
             </div>
         )
     }
