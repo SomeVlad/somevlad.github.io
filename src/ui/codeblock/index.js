@@ -1,19 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
+import styles from './style.module.css'
 
-class Pre extends Component {
-    render() {
-        return (
-            <pre>{this.props.children}</pre>
-        )
-    }
-}
+const Pre = ({ children }) => (
+    <pre className={styles.pre}>{children}</pre>
+)
 
-class Code extends Component {
-    render() {
-        return (
-            <code>{this.props.children}</code>
-        )
-    }
-}
+const Code = ({ children }) => (
+    <code>{children}</code>
+)
 
 export { Pre, Code }
