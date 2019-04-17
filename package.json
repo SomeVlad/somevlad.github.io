@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "serve": "serve -s build"
   },
-  "proxy": "http://vladsamoylov.com",
+  "proxy": "https://vladsamoylov.com",
   "eslintConfig": {
     "extends": "react-app"
   },

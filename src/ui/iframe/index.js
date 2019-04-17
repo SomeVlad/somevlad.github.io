@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import styles from './style.module.css'
 
-export class Iframe extends Component {
-    render() {
-        const { src, title } = this.props
-        return (
-            <iframe src={src} title={title} />
-        )
-    }
-}
+export const Iframe = ({ src, title }) => (
+    <div className={styles['iframe-wrap']}>
+        <iframe className={styles.iframe}
+                src={src}
+                title={title} />
+    </div>
+)
