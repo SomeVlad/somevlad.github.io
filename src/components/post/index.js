@@ -65,7 +65,7 @@ function Post({ content, title }) {
             .childNodes
     ]
     return (
-        <article key={heading} className={styles.root}>
+        <article key={heading} className={styles.article}>
             <h1>{heading}</h1>
             {postContents.map((node, index) => (
                 <Contents key={index} node={node} />

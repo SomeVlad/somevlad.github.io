@@ -1,15 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
+import styles from './style.module.css'
 
-export class Img extends Component {
-    render() {
-        const { src, alt, title, sizes, srcset } = this.props
-        return (
-            <img
-                src={src}
-                alt={alt}
-                title={title}
-                sizes={sizes}
-                srcSet={srcset} />
-        )
-    }
-}
+export const Img = ({ src, alt, title, sizes, srcset }) => (
+    <img
+        className={styles.img}
+        src={src}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        srcSet={srcset} />
+)
