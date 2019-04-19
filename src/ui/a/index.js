@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 
-export class A extends Component {
-    render() {
-        const { href, children } = this.props
-        return (
-            <a href={href}>{children}</a>
-        )
-    }
+export const A = ({ href, children, className }) => {
+    const isInternal = new URL(href).hostname === window.location.hostname
+    const target = isInternal ? '_self' : '_blank'
+    const rel = !isInternal && 'noreferrer noopener'
+    return (
+        <Fragment>
+            <a
+                className={className}
+                href={href}
+                target={target}
+                rel={rel}>
+                {children}
+            </a>
+            <link rel='prefetch' href={href} />
+        </Fragment>
+    )
 }
