@@ -37,6 +37,7 @@ describe('capitalize', () => {
             expect(capitalize('a')).toEqual('A')
             expect(capitalize('a b')).toEqual('A b')
             expect(capitalize(' ')).toEqual(' ')
+            expect(capitalize('A A')).toEqual('A a')
         }
     )
 
