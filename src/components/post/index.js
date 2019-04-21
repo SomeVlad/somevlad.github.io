@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styles from './style.module.css'
 import * as UI from 'ui'
+import { capitalize } from 'helpers'
 
 const DEFAULT_TAG_NAME = 'span'
 
@@ -11,8 +12,7 @@ const tagToComponentLookup = {
     Fragment
 }
 
-const pascalize = string => string[0].toUpperCase() + string.slice(1).toLowerCase()
-const findComponentByTagName = tagName => tagToComponentLookup[pascalize(tagName)]
+const findComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
 
 class Contents extends Component {
     render() {
@@ -29,7 +29,7 @@ class Contents extends Component {
             sizes,
             srcset
         } = this.props.node
-        if (!tagToComponentLookup[pascalize(tagName)]) console.log(this.props.node)
+        if (!tagToComponentLookup[capitalize(tagName)]) console.log(this.props.node)
         const Component = findComponentByTagName(tagName) || findComponentByTagName(DEFAULT_TAG_NAME)
         let contents
         if (!childNodes || childNodes.length === 0) {

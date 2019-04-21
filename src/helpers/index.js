@@ -11,3 +11,11 @@ export const getYoutubeVideoIdFromString = url => {
 
 export const getYoutubeThumbnailImageUrl = id => `https://i.ytimg.com/vi/${id}/mqdefault.jpg`
 export const getYoutubeVideoLink = id => `https://www.youtube.com/watch?v=${id}`
+
+export const capitalize = string => {
+    if (typeof string !== 'string' || string.length === 0) {
+        return null
+    }
+
+    return string[0].toUpperCase() + string.slice(1).toLowerCase()
+}
