@@ -26,7 +26,7 @@ export const Iframe = props => {
     const { src, title } = props
     const youtubeVideoId = getYoutubeVideoIdFromString(src)
     return (
-        <div className={cx('iframe-wrap')}>
+        <span className={cx('iframe-wrap')}>
             {youtubeVideoId ? (
                 <YoutubeVideoPreview id={youtubeVideoId} />
             ) : (
@@ -34,6 +34,6 @@ export const Iframe = props => {
                         src={src}
                         title={title} />
             )}
-        </div>
+        </span>
     )
 }
