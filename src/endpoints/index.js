@@ -1,3 +1,5 @@
+const baseUrl = 'https://vladsamoylov.com'
+
 export const Endpoints = {
-    posts: '/wp-json/wp/v2/posts'
+    posts: baseUrl + '/wp-json/wp/v2/posts'
 }
