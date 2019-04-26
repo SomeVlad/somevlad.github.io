@@ -10,7 +10,7 @@ const tagToComponentLookup = {
     Fragment
 }
 
-const findComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
+const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
 
 class Contents extends Component {
     render() {
@@ -28,7 +28,7 @@ class Contents extends Component {
             srcset
         } = this.props.node
         if (!tagToComponentLookup[capitalize(tagName)]) console.log(this.props.node)
-        const Component = findComponentByTagName(tagName) || findComponentByTagName(DEFAULT_TAG_NAME)
+        const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
 
         let contents
         if (!childNodes || childNodes.length === 0) {
