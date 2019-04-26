@@ -21,13 +21,14 @@ class Posts extends Component {
         if (posts.length === 0) {
             return 'loading...'
         }
+
         return (
             <div>
-                {posts.map(({ title, content }, index) => (
+                {posts.map(({ heading, contents }, index) => (
                         <Post
                             key={index}
-                            title={title}
-                            content={content} />
+                            heading={heading}
+                            contents={contents} />
                     )
                 )}
             </div>

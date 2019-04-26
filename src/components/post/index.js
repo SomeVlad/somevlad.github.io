@@ -5,8 +5,6 @@ import { capitalize } from 'helpers'
 
 const DEFAULT_TAG_NAME = 'span'
 
-const parser = new DOMParser()
-
 const tagToComponentLookup = {
     ...UI,
     Fragment
@@ -31,6 +29,7 @@ class Contents extends Component {
         } = this.props.node
         if (!tagToComponentLookup[capitalize(tagName)]) console.log(this.props.node)
         const Component = findComponentByTagName(tagName) || findComponentByTagName(DEFAULT_TAG_NAME)
+
         let contents
         if (!childNodes || childNodes.length === 0) {
             contents = textContent
@@ -55,23 +54,13 @@ class Contents extends Component {
     }
 }
 
-function Post({ content, title }) {
-    const heading = title.rendered
-    const __html = content.rendered
-    const postContents = [
-        ...parser
-            .parseFromString(__html, 'text/html')
-            .body
-            .childNodes
-    ]
-    return (
-        <article key={heading} className={styles.article}>
-            <h1>{heading}</h1>
-            {postContents.map((node, index) => (
-                <Contents key={index} node={node} />
-            ))}
-        </article>
-    )
-}
+const Post = ({ heading, contents }) => (
+    <article key={heading} className={styles.article}>
+        <h1>{heading}</h1>
+        {contents.map((node, index) => (
+            <Contents key={index} node={node} />
+        ))}
+    </article>
+)
 
 export { Post }
