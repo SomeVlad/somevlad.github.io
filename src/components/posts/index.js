@@ -8,10 +8,6 @@ class Posts extends Component {
         getPosts: PropTypes.func
     }
 
-    static defaultProps = {
-        posts: []
-    }
-
     componentDidMount() {
         this.props.getPosts()
     }
@@ -24,11 +20,10 @@ class Posts extends Component {
 
         return (
             <div>
-                {posts.map(({ heading, contents }, index) => (
+                {posts.map((post, index) => (
                         <Post
                             key={index}
-                            heading={heading}
-                            contents={contents} />
+                            {...post} />
                     )
                 )}
             </div>

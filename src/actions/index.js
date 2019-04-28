@@ -12,21 +12,21 @@ export const getPosts = () => {
 
         const { posts } = getState()
 
-        if (posts.length === 0) {
-            return postsRequest()
-                .then(posts => dispatch({
-                    type: POSTS_GET_SUCCESS,
-                    payload: posts
-                }))
-                .catch(error => dispatch({
-                    type: POSTS_GET_FAILURE,
-                    payload: error
-                }))
+        if (posts.length > 0) {
+            return dispatch({
+                type: POSTS_GET_SUCCESS,
+                payload: posts
+            })
         }
 
-        return dispatch({
-            type: POSTS_GET_SUCCESS,
-            payload: posts
-        })
+        return postsRequest()
+            .then(posts => dispatch({
+                type: POSTS_GET_SUCCESS,
+                payload: posts
+            }))
+            .catch(error => dispatch({
+                type: POSTS_GET_FAILURE,
+                payload: error
+            }))
     }
 }

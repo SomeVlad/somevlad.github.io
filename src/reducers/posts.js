@@ -1,15 +1,11 @@
-import {
-    POSTS_GET,
-    POSTS_GET_SUCCESS,
-    POSTS_GET_FAILURE
-} from 'actions'
+import { POSTS_GET, POSTS_GET_FAILURE, POSTS_GET_SUCCESS } from 'actions'
 
 const parser = new DOMParser()
 
 export default (state = [], { type, payload }) => {
     switch (type) {
         case POSTS_GET_SUCCESS:
-            const posts = payload.map(post => ({
+            return payload.map(post => ({
                     ...post,
                     contents: [
                         ...parser
@@ -21,13 +17,12 @@ export default (state = [], { type, payload }) => {
                 }
             ))
 
-            debugger
-            return posts
         case POSTS_GET_FAILURE:
             return {
                 ...state,
                 error: payload
             }
+
         case POSTS_GET:
         default:
             return state

@@ -1,5 +1,7 @@
-import MainPageContainer from 'containers/main-page-container'
+import MainPageContainer from './main-page-container'
+import PostContainer from './post-container'
 
 export {
-    MainPageContainer
+    MainPageContainer,
+    PostContainer
 }
