@@ -32,7 +32,8 @@ export const Iframe = props => {
             ) : (
                 <iframe className={cx('iframe')}
                         src={src}
-                        title={title} />
+                        title={title}
+                        loading='lazy' />
             )}
         </span>
     )

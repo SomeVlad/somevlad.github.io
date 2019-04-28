@@ -11,6 +11,7 @@ export const Img = ({ src, alt, title, sizes, srcset, className }) => {
             alt={alt}
             title={title}
             sizes={sizes}
-            srcSet={srcset} />
+            srcSet={srcset}
+            loading='lazy' />
     )
 }
