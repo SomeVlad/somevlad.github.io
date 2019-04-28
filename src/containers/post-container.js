@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import { getPost, getPosts } from 'actions'
-import { Header, Post } from 'components'
+import { Header, Post, Page404 } from 'components'
 
 class PostContainer extends Component {
     componentDidMount() {
@@ -21,7 +21,10 @@ class PostContainer extends Component {
     }
 
     render() {
-        const { post } = this.props
+        const { post, errors } = this.props
+        if (errors) {
+            return <Page404 />
+        }
         return (
             <Fragment>
                 <Header />
@@ -31,10 +34,11 @@ class PostContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ selectedPost, posts }) => {
+const mapStateToProps = ({ selectedPost, posts, errors }) => {
     return ({
         post: selectedPost,
-        posts
+        posts,
+        errors
     })
 }
 
