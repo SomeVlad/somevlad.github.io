@@ -55,30 +55,32 @@ class Contents extends Component {
     }
 }
 
-function Post(props) {
-    const { heading, contents, link, slug } = props
-    if (!contents) {
-        return 'loading...'
+class Post extends Component {
+    render() {
+        const { heading, contents, link, slug } = this.props
+        if (!contents) {
+            return 'loading...'
+        }
+
+        const url = new URL(link).pathname
+        const isFullPage = getPostSlugFromPathname(window.location.pathname) === slug
+        const { H1 } = UI
+
+        const title = isFullPage ? <H1>{heading}</H1> : (
+            <Link to={url}>
+                <H1>{heading}</H1>
+            </Link>
+        )
+
+        return (
+            <article key={heading} className={styles.article}>
+                {title}
+                {contents.map((node, index) => (
+                    <Contents key={index} node={node} />
+                ))}
+            </article>
+        )
     }
-
-    const url = new URL(link).pathname
-    const isFullPage = getPostSlugFromPathname(window.location.pathname) === slug
-    const { H1 } = UI
-
-    const title = isFullPage ? <H1>{heading}</H1> : (
-        <Link to={url}>
-            <H1>{heading}</H1>
-        </Link>
-    )
-
-    return (
-        <article key={heading} className={styles.article}>
-            {title}
-            {contents.map((node, index) => (
-                <Contents key={index} node={node} />
-            ))}
-        </article>
-    )
 }
 
 export { Post }

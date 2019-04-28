@@ -16,10 +16,10 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route exact path="/" component={MainPageContainer} />
+                <Route exact path='/' component={MainPageContainer} />
                 <Route component={PostContainer} />
-                {/*<Route path="/about" component={About} />*/}
-                {/*<Route path="/tag" component={Tags} />*/}
+                {/*<Route path='/about' component={About} />*/}
+                {/*<Route path='/tag' component={Tags} />*/}
             </Switch>
         </Router>
     </Provider>,

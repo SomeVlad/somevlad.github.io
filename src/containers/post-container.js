@@ -1,14 +1,22 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
-import { getPosts } from 'actions'
+import { getPost, getPosts } from 'actions'
 import { Header, Post } from 'components'
-import { getPostSlugFromPathname } from 'helpers'
 
 class PostContainer extends Component {
     componentDidMount() {
-        const { getPosts } = this.props
-        if (getPosts) {
+        const { posts, getPost, getPosts } = this.props
+
+        if (posts.length > 0) {
+            getPost()
+        } else {
             getPosts()
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.posts.length !== this.props.posts.length) {
+            this.props.getPost()
         }
     }
 
@@ -23,14 +31,15 @@ class PostContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ posts }) => {
-    const post = posts.find(post => post.slug === getPostSlugFromPathname(window.location.pathname))
-    return {
-        post
-    }
+const mapStateToProps = ({ selectedPost, posts }) => {
+    return ({
+        post: selectedPost,
+        posts
+    })
 }
 
 const mapDispatchToProps = {
+    getPost,
     getPosts
 }
 

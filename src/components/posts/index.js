@@ -4,12 +4,7 @@ import { Post } from 'components/post'
 
 class Posts extends Component {
     static propTypes = {
-        posts: PropTypes.array,
-        getPosts: PropTypes.func
-    }
-
-    componentDidMount() {
-        this.props.getPosts()
+        posts: PropTypes.array
     }
 
     render() {

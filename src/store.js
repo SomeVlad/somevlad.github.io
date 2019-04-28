@@ -2,6 +2,11 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from 'reducers'
 
+const INITIAL_STATE = {
+    posts: [],
+    selectedPost: {}
+}
+
 const enhancers = []
 const middleware = [
     thunk
@@ -18,7 +23,7 @@ const composedEnhancers = compose(
     ...enhancers
 )
 
-export default function configureStore(initialState = {}) {
+export default function configureStore(initialState = INITIAL_STATE) {
     return createStore(
         rootReducer,
         initialState,

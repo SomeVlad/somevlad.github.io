@@ -1,4 +1,8 @@
-import { POSTS_GET, POSTS_GET_FAILURE, POSTS_GET_SUCCESS } from 'actions'
+import {
+    POSTS_GET,
+    POSTS_GET_FAILURE,
+    POSTS_GET_SUCCESS
+} from 'actions'
 
 const parser = new DOMParser()
 

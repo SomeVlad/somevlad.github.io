@@ -1,16 +1,26 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
 import { Header, Posts } from 'components'
 
-const MainPage = ({ posts, getPosts }) => (
-    <Fragment>
-        <Header />
-        <Posts
-            posts={posts}
-            getPosts={getPosts} />
-    </Fragment>
-)
+class MainPage extends Component {
+    componentDidMount() {
+        const { getPosts } = this.props
+        if (getPosts) {
+            getPosts()
+        }
+    }
+
+    render() {
+        const { posts } = this.props
+        return (
+            <Fragment>
+                <Header />
+                <Posts posts={posts} />
+            </Fragment>
+        )
+    }
+}
 
 const mapStateToProps = ({ posts }) => ({
     posts
