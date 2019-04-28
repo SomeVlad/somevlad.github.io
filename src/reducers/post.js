@@ -12,7 +12,12 @@ export default (state = {}, { type, payload }) => {
             }
 
         case POST_GET:
+            debugger
+            if (payload && payload.isSamePost) {
+                return state
+            }
             return {}
+
         default:
             return state
     }

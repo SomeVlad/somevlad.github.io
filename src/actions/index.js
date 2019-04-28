@@ -38,13 +38,15 @@ export const getPosts = () => {
 
 export const getPost = () => {
     return (dispatch, getState) => {
-        dispatch({
-            type: POST_GET
-        })
-
-        const { posts } = getState()
-
+        const { posts, selectedPost } = getState()
         const post = posts.find(post => post.slug === getPostSlugFromPathname(window.location.pathname))
+        const isSamePost = selectedPost && post && selectedPost.id === post.id
+        dispatch({
+            type: POST_GET,
+            payload: {
+                isSamePost
+            }
+        })
 
         if (post) {
             return dispatch({
