@@ -1,4 +1,32 @@
-import { getYoutubeVideoIdFromString, capitalize } from '.'
+import {
+    getYoutubeVideoIdFromString,
+    capitalize,
+    getPostSlugFromPathname
+} from '.'
+
+describe('getPostSlugFromPathname', () => {
+    it('returns valid slug with valid input', () => {
+        const validUrls = [
+            'http://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
+            'https://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
+            'https://vladsamoylov.com/the-best-introductory-explanation-of-ml-ever',
+            '/the-best-introductory-explanation-of-ml-ever/',
+            'the-best-introductory-explanation-of-ml-ever'
+        ]
+        validUrls.forEach(string => expect(getPostSlugFromPathname(string))
+            .toEqual('the-best-introductory-explanation-of-ml-ever'))
+    })
+
+    it('returns null if has invalid input', () => {
+        expect(getPostSlugFromPathname(undefined)).toEqual(null)
+        expect(getPostSlugFromPathname(null)).toEqual(null)
+        expect(getPostSlugFromPathname(NaN)).toEqual(null)
+        expect(getPostSlugFromPathname(0)).toEqual(null)
+        expect(getPostSlugFromPathname('')).toEqual(null)
+        expect(getPostSlugFromPathname(123)).toEqual(null)
+        expect(getPostSlugFromPathname()).toEqual(null)
+    })
+})
 
 describe('getYoutubeVideoIdFromString', () => {
     const validStrings = [
