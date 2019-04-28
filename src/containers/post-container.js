@@ -15,8 +15,11 @@ class PostContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.posts.length !== this.props.posts.length) {
-            this.props.getPost()
+        const { location, posts, getPost } = this.props
+        const isPostsChanged = prevProps.posts.length !== posts.length
+        const isLocationChanged = prevProps.location.pathname !== location.pathname
+        if (isPostsChanged || isLocationChanged) {
+            getPost()
         }
     }
 
