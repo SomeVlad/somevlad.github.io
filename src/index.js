@@ -5,7 +5,8 @@ import configureStore from './store'
 import './index.css'
 import {
     MainPageContainer,
-    PostContainer
+    PostContainer,
+    TagPageContainer
 } from 'containers'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -17,9 +18,9 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route exact path='/' component={MainPageContainer} />
+                <Route path='/tags/:tag' component={TagPageContainer} />
                 <Route component={PostContainer} />
                 {/*<Route path='/about' component={About} />*/}
-                {/*<Route path='/tag' component={Tags} />*/}
             </Switch>
         </Router>
     </Provider>,

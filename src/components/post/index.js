@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styles from './style.module.css'
 import * as UI from 'ui'
-import { capitalize, getPostSlugFromPathname } from 'helpers'
+import { capitalize, getSlugFromPathname } from 'helpers'
 import { Link } from 'react-router-dom'
 
 const DEFAULT_TAG_NAME = 'span'
@@ -55,6 +55,14 @@ class Contents extends Component {
     }
 }
 
+const PostTitle = ({ isFullPage, heading, url }) => isFullPage ? (
+    <UI.H1>{heading}</UI.H1>
+) : (
+    <Link to={url}>
+        <UI.H1>{heading}</UI.H1>
+    </Link>
+)
+
 class Post extends Component {
     render() {
         const { heading, contents, link, slug } = this.props
@@ -63,18 +71,14 @@ class Post extends Component {
         }
 
         const url = new URL(link).pathname
-        const isFullPage = getPostSlugFromPathname(window.location.pathname) === slug
-        const { H1 } = UI
-
-        const title = isFullPage ? <H1>{heading}</H1> : (
-            <Link to={url}>
-                <H1>{heading}</H1>
-            </Link>
-        )
+        const isFullPage = getSlugFromPathname(window.location.pathname) === slug
 
         return (
             <article key={heading} className={styles.article}>
-                {title}
+                <PostTitle
+                    isFullPage={isFullPage}
+                    heading={heading}
+                    url={url} />
                 {contents.map((node, index) => (
                     <Contents key={index} node={node} />
                 ))}

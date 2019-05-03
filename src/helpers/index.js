@@ -20,7 +20,7 @@ export const capitalize = string => {
     return string[0].toUpperCase() + string.slice(1).toLowerCase()
 }
 
-export const getPostSlugFromPathname = pathname => {
+export const getSlugFromPathname = pathname => {
     if (!pathname || typeof pathname !== 'string') {
         return null
     }

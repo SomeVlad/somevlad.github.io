@@ -1,10 +1,10 @@
 import {
     getYoutubeVideoIdFromString,
     capitalize,
-    getPostSlugFromPathname
+    getSlugFromPathname
 } from '.'
 
-describe('getPostSlugFromPathname', () => {
+describe('getSlugFromPathname', () => {
     it('returns valid slug with valid input', () => {
         const validUrls = [
             'http://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
@@ -13,18 +13,18 @@ describe('getPostSlugFromPathname', () => {
             '/the-best-introductory-explanation-of-ml-ever/',
             'the-best-introductory-explanation-of-ml-ever'
         ]
-        validUrls.forEach(string => expect(getPostSlugFromPathname(string))
+        validUrls.forEach(string => expect(getSlugFromPathname(string))
             .toEqual('the-best-introductory-explanation-of-ml-ever'))
     })
 
     it('returns null if has invalid input', () => {
-        expect(getPostSlugFromPathname(undefined)).toEqual(null)
-        expect(getPostSlugFromPathname(null)).toEqual(null)
-        expect(getPostSlugFromPathname(NaN)).toEqual(null)
-        expect(getPostSlugFromPathname(0)).toEqual(null)
-        expect(getPostSlugFromPathname('')).toEqual(null)
-        expect(getPostSlugFromPathname(123)).toEqual(null)
-        expect(getPostSlugFromPathname()).toEqual(null)
+        expect(getSlugFromPathname(undefined)).toEqual(null)
+        expect(getSlugFromPathname(null)).toEqual(null)
+        expect(getSlugFromPathname(NaN)).toEqual(null)
+        expect(getSlugFromPathname(0)).toEqual(null)
+        expect(getSlugFromPathname('')).toEqual(null)
+        expect(getSlugFromPathname(123)).toEqual(null)
+        expect(getSlugFromPathname()).toEqual(null)
     })
 })
 
