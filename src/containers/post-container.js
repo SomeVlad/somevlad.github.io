@@ -1,7 +1,8 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import { getPost, getPosts } from 'actions'
-import { Header, Post, Page404 } from 'components'
+import { Post, Page404 } from 'components'
+import { HeaderContainer } from '.'
 
 class PostContainer extends Component {
     componentDidMount() {
@@ -30,7 +31,7 @@ class PostContainer extends Component {
         }
         return (
             <Fragment>
-                <Header />
+                <HeaderContainer />
                 <Post {...post} />
             </Fragment>
         )
