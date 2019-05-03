@@ -4,7 +4,8 @@ import rootReducer from 'reducers'
 
 const INITIAL_STATE = {
     posts: [],
-    selectedPost: {}
+    selectedPost: {},
+    tags: []
 }
 
 const enhancers = []
