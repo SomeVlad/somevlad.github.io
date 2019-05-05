@@ -1,19 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { Logo } from 'components'
 
 export const Header = () => (
-    <ul>
-        <li>
-            <Link to='/'>Home</Link>
-        </li>
-        <li>
-            <Link to='/about'>about me</Link>
-        </li>
-        <li>
-            <Link to='/tag/in-a-nutshell'>in a nutshell</Link>
-        </li>
-        <li>
-            <Link to='/tag/javascript'>javascript</Link>
-        </li>
-    </ul>
+    <Fragment>
+        <Link to='/'><Logo /></Link>
+        <ul>
+            <li>
+                <Link to='/about'>about me</Link>
+            </li>
+        </ul>
+    </Fragment>
 )
