@@ -5,7 +5,7 @@ import styles from './style.module.css'
 const Tag = ({ id, name, slug }) => (
     <span
         key={id}
-        className={styles.selectedTag}>
+        className={styles.tag}>
         <Link
             to={`/tags/${slug}`}>
             {name}
