@@ -12,6 +12,7 @@ export const Img = ({ src, alt, title, sizes, srcset, className }) => {
             title={title}
             sizes={sizes}
             srcSet={srcset}
-            loading='lazy' />
+            loading='lazy' /* https://addyosmani.com/blog/lazy-loading/ */
+        />
     )
 }

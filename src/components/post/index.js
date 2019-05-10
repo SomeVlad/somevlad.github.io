@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import styles from './style.module.css'
+import { Link } from 'react-router-dom'
 import * as UI from 'ui'
 import { capitalize, getSlugFromPathname } from 'helpers'
-import { Link } from 'react-router-dom'
+import styles from './style.module.css'
 
 const DEFAULT_TAG_NAME = 'span'
 
@@ -13,46 +13,44 @@ const tagToComponentLookup = {
 
 const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
 
-class Contents extends Component {
-    render() {
-        const {
-            childNodes,
-            tagName = 'fragment',
-            textContent,
-            href,
-            title,
-            src,
-            alt,
-            allow,
-            allowfullscreen,
-            sizes,
-            srcset
-        } = this.props.node
-        if (!tagToComponentLookup[capitalize(tagName)]) console.log(this.props.node)
-        const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
+const renderNodeAsComponent = node => {
+    const {
+        childNodes,
+        tagName = 'fragment',
+        textContent,
+        href,
+        title,
+        src,
+        alt,
+        allow,
+        allowfullscreen,
+        sizes,
+        srcset
+    } = node
+    if (!tagToComponentLookup[capitalize(tagName)]) console.log(node)
+    const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
 
-        let contents
-        if (!childNodes || childNodes.length === 0) {
-            contents = textContent
-        } else {
-            contents = [...childNodes].map((node, index) => <Contents key={index} node={node} />)
-        }
-
-        const additionalParameters = {
-            ...href && { href },
-            ...title && { title },
-            ...src && { src },
-            ...alt && { alt },
-            ...allow && { allow },
-            ...allowfullscreen && { allowfullscreen },
-            ...sizes && { sizes },
-            ...srcset && { srcset }
-        }
-
-        return (
-            <Component children={contents} {...additionalParameters} />
-        )
+    let contents
+    if (!childNodes || childNodes.length === 0) {
+        contents = textContent
+    } else {
+        contents = [...childNodes].map(renderNodeAsComponent)
     }
+
+    const additionalParameters = {
+        ...href && { href },
+        ...title && { title },
+        ...src && { src },
+        ...alt && { alt },
+        ...allow && { allow },
+        ...allowfullscreen && { allowfullscreen },
+        ...sizes && { sizes },
+        ...srcset && { srcset }
+    }
+
+    return (
+        <Component children={contents} {...additionalParameters} />
+    )
 }
 
 const PostTitle = ({ isFullPage, heading, url }) => isFullPage ? (
@@ -79,9 +77,7 @@ class Post extends Component {
                     isFullPage={isFullPage}
                     heading={heading}
                     url={url} />
-                {contents.map((node, index) => (
-                    <Contents key={index} node={node} />
-                ))}
+                {contents.map(renderNodeAsComponent)}
             </article>
         )
     }
