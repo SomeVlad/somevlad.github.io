@@ -1,3 +1,6 @@
+import React, { Fragment } from 'react'
+import * as UI from 'ui'
+
 export const getYoutubeVideoIdFromString = url => {
     if (!url || !url.replace) {
         return null
@@ -26,4 +29,53 @@ export const getSlugFromPathname = pathname => {
     }
 
     return pathname.split('/').filter(Boolean).pop()
+}
+
+const DEFAULT_TAG_NAME = 'span'
+
+const tagToComponentLookup = {
+    ...UI,
+    Fragment
+}
+
+const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
+
+export const renderNodeAsComponent = node => {
+    const {
+        childNodes,
+        tagName = 'fragment',
+        textContent,
+        href,
+        title,
+        src,
+        alt,
+        allow,
+        allowfullscreen,
+        sizes,
+        srcset
+    } = node
+    if (!tagToComponentLookup[capitalize(tagName)]) console.log(node)
+    const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
+
+    let contents
+    if (!childNodes || childNodes.length === 0) {
+        contents = textContent
+    } else {
+        contents = [...childNodes].map(renderNodeAsComponent)
+    }
+
+    const additionalParameters = {
+        ...href && { href },
+        ...title && { title },
+        ...src && { src },
+        ...alt && { alt },
+        ...allow && { allow },
+        ...allowfullscreen && { allowfullscreen },
+        ...sizes && { sizes },
+        ...srcset && { srcset }
+    }
+
+    return (
+        <Component children={contents} {...additionalParameters} />
+    )
 }
