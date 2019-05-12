@@ -1,5 +1,6 @@
 import { Header } from './header'
 import { Post } from './post'
+import { PostPreview } from './post-preview'
 import { Posts } from './posts'
 import { Tags } from './tags'
 import { Tag } from './tag'
@@ -10,6 +11,7 @@ export {
     Header,
     Posts,
     Post,
+    PostPreview,
     Tags,
     Tag,
     Logo,

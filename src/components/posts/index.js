@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
-import { Post } from 'components/post'
+import { PostPreview } from 'components'
 
 class Posts extends Component {
     static propTypes = {
@@ -16,7 +16,7 @@ class Posts extends Component {
         return (
             <div>
                 {posts.map((post, index) => (
-                        <Post
+                        <PostPreview
                             key={index}
                             {...post} />
                     )
