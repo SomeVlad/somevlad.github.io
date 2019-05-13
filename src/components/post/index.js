@@ -13,7 +13,7 @@ class Post extends Component {
         }
 
         return (
-            <article key={heading} className={styles.article}>
+            <article className={styles.article}>
                 <H1>{heading}</H1>
                 {contents.map(renderNodeAsComponent)}
             </article>

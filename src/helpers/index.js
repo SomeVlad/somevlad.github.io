@@ -40,7 +40,7 @@ const tagToComponentLookup = {
 
 const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
 
-export const renderNodeAsComponent = node => {
+export const renderNodeAsComponent = (node, index) => {
     const {
         childNodes,
         tagName = 'fragment',
@@ -76,6 +76,9 @@ export const renderNodeAsComponent = node => {
     }
 
     return (
-        <Component children={contents} {...additionalParameters} />
+        <Component
+            key={index}
+            children={contents}
+            {...additionalParameters} />
     )
 }
