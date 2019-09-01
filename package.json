@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "classnames": "2.2.6",
+    "lodash": "4.17.15",
     "prop-types": "latest",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
@@ -29,13 +30,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "husky": "2.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test -- --coverage"
-    }
-  }
+  ]
 }

@@ -1,31 +1,12 @@
-import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
-import { Posts } from 'components'
-import { HeaderContainer } from '.'
+import { MainPage } from 'components/main-page'
+import { selectPosts } from 'selectors'
 
-class MainPage extends Component {
-    componentDidMount() {
-        const { getPosts } = this.props
-        if (getPosts) {
-            getPosts()
-        }
-    }
-
-    render() {
-        const { posts } = this.props
-        return (
-            <Fragment>
-                <HeaderContainer />
-                <Posts posts={posts} />
-            </Fragment>
-        )
-    }
+const mapStateToProps = state => {
+    const posts = selectPosts(state)
+    return { posts }
 }
-
-const mapStateToProps = ({ posts }) => ({
-    posts
-})
 
 const mapDispatchToProps = {
     getPosts

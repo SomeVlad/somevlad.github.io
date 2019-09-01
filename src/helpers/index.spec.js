@@ -3,6 +3,7 @@ import {
     capitalize,
     getSlugFromPathname
 } from '.'
+import { isSlugInPathname } from 'helpers/index'
 
 describe('getSlugFromPathname', () => {
     it('returns valid slug with valid input', () => {
@@ -77,5 +78,16 @@ describe('capitalize', () => {
         expect(capitalize('')).toEqual(null)
         expect(capitalize(123)).toEqual(null)
         expect(capitalize()).toEqual(null)
+    })
+})
+
+describe('isSlugInPathname', () => {
+    it('should return false by default', () => {
+        expect(isSlugInPathname(null)).toEqual(false)
+        expect(isSlugInPathname(undefined)).toEqual(false)
+        expect(isSlugInPathname(NaN)).toEqual(false)
+        expect(isSlugInPathname(0)).toEqual(false)
+        expect(isSlugInPathname('')).toEqual(false)
+        expect(isSlugInPathname()).toEqual(false)
     })
 })

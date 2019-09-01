@@ -1,19 +1,9 @@
-import { Header } from './header'
-import { Post } from './post'
-import { PostPreview } from './post-preview'
-import { Posts } from './posts'
-import { Tags } from './tags'
-import { Tag } from './tag'
-import { Logo } from './logo'
-import { Page404 } from './404'
-
-export {
-    Header,
-    Posts,
-    Post,
-    PostPreview,
-    Tags,
-    Tag,
-    Logo,
-    Page404
-}
+export { Header } from './header'
+export { Post } from './post'
+export { PostPreview } from './post-preview'
+export { Posts } from './posts'
+export { Tags } from './tags'
+export { Tag } from './tag'
+export { Logo } from './logo'
+export { Page404 } from './404'
+export { MainPage } from './main-page'

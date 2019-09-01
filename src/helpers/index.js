@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { getOr } from 'lodash/fp'
 import * as UI from 'ui'
 
 export const getYoutubeVideoIdFromString = url => {
@@ -81,4 +82,8 @@ export const renderNodeAsComponent = (node, index) => {
             children={contents}
             {...additionalParameters} />
     )
+}
+
+export const isSlugInPathname = post => {
+    return getOr(null, ['slug'], post) === getSlugFromPathname(window.location.pathname)
 }

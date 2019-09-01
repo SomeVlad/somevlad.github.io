@@ -1,6 +1,5 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { HeaderContainer } from 'containers'
 import { Tag } from 'components'
 import { getTag } from 'actions'
 
@@ -24,10 +23,7 @@ class TagPageContainer extends Component {
     render() {
         const { selectedTag } = this.props
         return (
-            <Fragment>
-                <HeaderContainer />
-                <Tag tag={selectedTag} />
-            </Fragment>
+            <Tag tag={selectedTag} />
         )
     }
 }

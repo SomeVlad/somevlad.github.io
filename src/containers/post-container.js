@@ -1,53 +1,52 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getPost, getPosts } from 'actions'
+import { getPosts } from 'actions'
 import { Post, Page404 } from 'components'
-import { HeaderContainer } from '.'
+import {
+    selectLoadingPosts,
+    selectPosts,
+    selectSelectedPost
+} from 'selectors'
 
 class PostContainer extends Component {
     componentDidMount() {
-        const { posts, getPost, getPosts } = this.props
+        const { posts, getPosts } = this.props
 
-        if (posts.length > 0) {
-            getPost()
-        } else {
+        if (posts.length === 0) {
             getPosts()
         }
     }
 
-    componentDidUpdate(prevProps) {
-        const { location, posts, getPost } = this.props
-        const isPostsChanged = prevProps.posts.length !== posts.length
-        const isLocationChanged = prevProps.location.pathname !== location.pathname
-        if (isPostsChanged || isLocationChanged) {
-            getPost()
-        }
-    }
-
     render() {
-        const { post, errors } = this.props
-        if (errors) {
+        const { post, isLoadingPosts } = this.props
+
+        if (isLoadingPosts) {
+            return 'loading...'
+        }
+
+        if (!post) {
             return <Page404 />
         }
+
         return (
-            <Fragment>
-                <HeaderContainer />
-                <Post {...post} />
-            </Fragment>
+            <Post {...post} />
         )
     }
 }
 
-const mapStateToProps = ({ selectedPost, posts, errors }) => {
+const mapStateToProps = state => {
+    const post = selectSelectedPost(state)
+    const posts = selectPosts(state)
+    const isLoadingPosts = selectLoadingPosts(state)
+
     return ({
-        post: selectedPost,
+        post,
         posts,
-        errors
+        isLoadingPosts
     })
 }
 
 const mapDispatchToProps = {
-    getPost,
     getPosts
 }
 
