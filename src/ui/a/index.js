@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 export const A = ({ href, children, className }) => {
     const isInternal = new URL(href).hostname === window.location.hostname
@@ -16,4 +17,10 @@ export const A = ({ href, children, className }) => {
             <link rel='prefetch' href={href} />
         </Fragment>
     )
+}
+
+A.propTypes = {
+    href: PropTypes.string,
+    children: PropTypes.node,
+    className: PropTypes.string
 }

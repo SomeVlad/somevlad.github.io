@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Posts } from 'components'
 
 export class MainPage extends Component {
+    static propTypes = {
+        posts: PropTypes.object,
+        getPosts: PropTypes.func
+    }
+
     componentDidMount() {
-        const { getPosts } = this.props
-        if (getPosts) {
-            getPosts()
-        }
+        this.props.getPosts()
     }
 
     render() {

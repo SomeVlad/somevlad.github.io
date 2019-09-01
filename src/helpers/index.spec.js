@@ -44,10 +44,10 @@ describe('getYoutubeVideoIdFromString', () => {
     ]
 
     it('returns valid youtube video id from string', () => {
-            validStrings.forEach(string =>
-                expect(getYoutubeVideoIdFromString(string))
-                    .toEqual('BGL22PTIOAM'))
-        }
+        validStrings.forEach(string =>
+            expect(getYoutubeVideoIdFromString(string))
+                .toEqual('BGL22PTIOAM'))
+    }
     )
 
     it('returns null if has invalid input', () => {
@@ -63,11 +63,11 @@ describe('getYoutubeVideoIdFromString', () => {
 
 describe('capitalize', () => {
     it('returns capitalized string', () => {
-            expect(capitalize('a')).toEqual('A')
-            expect(capitalize('a b')).toEqual('A b')
-            expect(capitalize(' ')).toEqual(' ')
-            expect(capitalize('A A')).toEqual('A a')
-        }
+        expect(capitalize('a')).toEqual('A')
+        expect(capitalize('a b')).toEqual('A b')
+        expect(capitalize(' ')).toEqual(' ')
+        expect(capitalize('A A')).toEqual('A a')
+    }
     )
 
     it('returns null if has invalid input', () => {

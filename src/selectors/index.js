@@ -2,9 +2,9 @@ import { getOr, pipe, find } from 'lodash/fp'
 import { isSlugInPathname } from 'helpers'
 
 
-export const selectPosts = getOr([], ['posts'])
+export const selectPostCollection = getOr({}, ['posts', 'postCollection'])
 export const selectSelectedPost = pipe([
-    selectPosts,
+    selectPostCollection,
     find(isSlugInPathname),
 ])
 

@@ -1,12 +1,15 @@
 import {
+    POSTS_GET_FAILURE,
     TAG_GET_FAILURE
 } from 'actions'
 
-export default (state = null, { type }) => {
+export default (_, { type }) => {
     switch (type) {
-        case TAG_GET_FAILURE:
-            return 404
-        default:
-            return null
+    case POSTS_GET_FAILURE:
+    case TAG_GET_FAILURE: {
+        return 404
+    }
+    default:
+        return null
     }
 }

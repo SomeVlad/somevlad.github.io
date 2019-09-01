@@ -1,8 +1,8 @@
 import {
-    postsRequest,
     tagsRequest
 } from 'requests'
-import { getSlugFromPathname } from 'helpers'
+import {getSlugFromPathname} from 'helpers'
+import {resolvePosts} from '../resolvers'
 
 export const POSTS_GET = 'POSTS_GET'
 export const POSTS_GET_SUCCESS = 'POSTS_GET_SUCCESS'
@@ -16,21 +16,12 @@ export const TAG_GET = 'TAG_GET'
 export const TAG_GET_SUCCESS = 'TAG_GET_SUCCESS'
 export const TAG_GET_FAILURE = 'TAG_GET_FAILURE'
 
-export const getPosts = () => (dispatch, getState) => {
+export const getPosts = () => dispatch => {
     dispatch({
         type: POSTS_GET
     })
 
-    const { posts } = getState()
-
-    if (posts.length > 0) {
-        return dispatch({
-            type: POSTS_GET_SUCCESS,
-            payload: posts
-        })
-    }
-
-    return postsRequest()
+    return resolvePosts()
         .then(posts => dispatch({
             type: POSTS_GET_SUCCESS,
             payload: posts
@@ -46,7 +37,7 @@ export const getTags = () => (dispatch, getState) => {
         type: TAGS_GET
     })
 
-    const { tags } = getState()
+    const {tags} = getState()
 
     if (tags.length > 0) {
         return dispatch({
@@ -71,7 +62,7 @@ export const getTag = () => (dispatch, getState) => {
         type: TAG_GET
     })
 
-    const { tags } = getState()
+    const {tags} = getState()
     const tag = tags.find(tags => tags.slug === getSlugFromPathname(window.location.pathname))
 
     if (tag) {

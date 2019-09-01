@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './style.module.css'
+import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import {
     getYoutubeVideoIdFromString,
@@ -16,14 +17,17 @@ const YoutubeVideoPreview = ({ id }) => (
         className={youtubePreviewLinkClassNames}
         href={getYoutubeVideoLink(id)}>
         <Img src={getYoutubeThumbnailImageUrl(id)}
-             className={cx('iframe-image')}
-             alt='youtube video'
-             title='youtube video' />
+            className={cx('iframe-image')}
+            alt='youtube video'
+            title='youtube video' />
     </A>
 )
 
-export const Iframe = props => {
-    const { src, title } = props
+YoutubeVideoPreview.propTypes = {
+    id: PropTypes.number
+}
+
+export const Iframe = ({ src, title }) => {
     const youtubeVideoId = getYoutubeVideoIdFromString(src)
     return (
         <span className={cx('iframe-wrap')}>
@@ -31,10 +35,15 @@ export const Iframe = props => {
                 <YoutubeVideoPreview id={youtubeVideoId} />
             ) : (
                 <iframe className={cx('iframe')}
-                        src={src}
-                        title={title}
-                        loading='lazy' />
+                    src={src}
+                    title={title}
+                    loading='lazy' />
             )}
         </span>
     )
+}
+
+Iframe.propTypes = {
+    src: PropTypes.string,
+    title: PropTypes.string,
 }

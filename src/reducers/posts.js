@@ -1,34 +1,20 @@
 import {
-    POSTS_GET,
-    POSTS_GET_FAILURE,
     POSTS_GET_SUCCESS
 } from 'actions'
+import {createReducer} from 'helpers'
 
-const parser = new DOMParser()
-
-export default (state = [], { type, payload }) => {
-    switch (type) {
-        case POSTS_GET_SUCCESS:
-            return payload.map(post => ({
-                    ...post,
-                    contents: [
-                        ...parser
-                            .parseFromString(post.content.rendered, 'text/html')
-                            .body
-                            .childNodes
-                    ],
-                    heading: post.title.rendered
-                }
-            ))
-
-        case POSTS_GET_FAILURE:
-            return {
-                ...state,
-                error: payload
-            }
-
-        case POSTS_GET:
-        default:
-            return state
-    }
+const INITIAL_STATE = {
+    postIds: [],
+    postCollection: []
 }
+
+export default createReducer(INITIAL_STATE, {
+    [POSTS_GET_SUCCESS]: (state, { payload }) => {
+        const { postIds, postCollection } = payload
+
+        return {
+            postIds,
+            postCollection
+        }
+    },
+})

@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Ul extends Component {
+    static propTypes = {
+        children: PropTypes.node
+    }
+
     render() {
         return (
             <ul>{this.props.children}</ul>
@@ -9,6 +14,10 @@ class Ul extends Component {
 }
 
 class Ol extends Component {
+    static propTypes = {
+        children: PropTypes.node
+    }
+
     render() {
         return (
             <ol>{this.props.children}</ol>
@@ -17,6 +26,10 @@ class Ol extends Component {
 }
 
 class Li extends Component {
+    static propTypes = {
+        children: PropTypes.node
+    }
+
     render() {
         return (
             <li>{this.props.children}</li>

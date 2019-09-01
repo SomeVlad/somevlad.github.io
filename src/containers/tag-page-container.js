@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { Tag } from 'components'
 import { getTag } from 'actions'
 
 class TagPageContainer extends Component {
+    static propTypes = {
+        selectedTag: PropTypes.object,
+        getTag: PropTypes.func,
+        tags: PropTypes.array,
+        location: PropTypes.object
+    }
+
     componentDidMount() {
         const { selectedTag, getTag } = this.props
         if (!selectedTag.id) {

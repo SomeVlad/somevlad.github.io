@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { getOr } from 'lodash/fp'
+import { getOr, isString, isFunction } from 'lodash/fp'
 import * as UI from 'ui'
 
 export const getYoutubeVideoIdFromString = url => {
@@ -79,11 +79,25 @@ export const renderNodeAsComponent = (node, index) => {
     return (
         <Component
             key={index}
-            children={contents}
-            {...additionalParameters} />
+            {...additionalParameters}>
+            {contents}
+        </Component>
     )
 }
 
-export const isSlugInPathname = post => {
-    return getOr(null, ['slug'], post) === getSlugFromPathname(window.location.pathname)
-}
+export const isSlugInPathname = post => getOr(null, ['slug'], post) === getSlugFromPathname(window.location.pathname)
+
+export const createReducer = (initialState, actionLookup = {}) =>
+    (state = initialState, action) => {
+        if (!action || !isString(action.type)) {
+            return state
+        }
+
+        const reducer = actionLookup[action.type]
+
+        if (!isFunction(reducer)) {
+            return state
+        }
+
+        return reducer(state, action)
+    }

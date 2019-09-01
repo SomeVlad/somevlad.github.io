@@ -1,9 +1,15 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { getTags } from 'actions'
 import { Header, Tags } from 'components'
 
 class HeaderContainer extends Component {
+    static propTypes = {
+        tags: PropTypes.array,
+        getTags: PropTypes.func
+    }
+
     componentDidMount() {
         const { getTags } = this.props
         if (getTags) {
