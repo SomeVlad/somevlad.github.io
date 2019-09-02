@@ -15,7 +15,7 @@ const Tag = ({ id, name, slug }) => (
 Tag.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
-    slug: PropTypes.string
+    slug: PropTypes.string,
 }
 
 export const Tags = ({ tags }) => (
@@ -23,5 +23,5 @@ export const Tags = ({ tags }) => (
 )
 
 Tags.propTypes = {
-    tags: PropTypes.array
+    tags: PropTypes.array,
 }

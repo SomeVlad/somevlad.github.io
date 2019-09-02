@@ -5,13 +5,11 @@ import rootReducer from 'reducers'
 const INITIAL_STATE = {
     posts: [],
     tags: [],
-    errors: null
+    errors: null,
 }
 
 const enhancers = []
-const middleware = [
-    thunk
-]
+const middleware = [thunk]
 
 const { __REDUX_DEVTOOLS_EXTENSION__ } = window
 

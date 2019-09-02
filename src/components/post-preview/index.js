@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import {H1} from 'ui'
+import { H1 } from 'ui'
 import {
-    renderNodeAsComponent
+    renderNodeAsComponent,
 } from 'helpers'
 import styles from './style.module.css'
 
@@ -15,18 +15,19 @@ const PostTitle = ({ heading, url }) => (
 
 PostTitle.propTypes = {
     heading: PropTypes.string,
-    url: PropTypes.string
+    url: PropTypes.string,
 }
 
 class PostPreview extends Component {
     static propTypes = {
         heading: PropTypes.string,
         contents: PropTypes.array,
-        link: PropTypes.string
+        link: PropTypes.string,
     }
 
     render() {
         const { heading, contents, link } = this.props
+
         if (!contents) {
             return 'loading...'
         }

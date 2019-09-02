@@ -7,7 +7,7 @@ const Pre = ({ children }) => (
 )
 
 Pre.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
 }
 
 const Code = ({ children }) => (
@@ -15,7 +15,7 @@ const Code = ({ children }) => (
 )
 
 Code.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
 }
 
 export { Pre, Code }

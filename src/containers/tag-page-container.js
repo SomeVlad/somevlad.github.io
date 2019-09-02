@@ -9,11 +9,12 @@ class TagPageContainer extends Component {
         selectedTag: PropTypes.object,
         getTag: PropTypes.func,
         tags: PropTypes.array,
-        location: PropTypes.object
+        location: PropTypes.object,
     }
 
     componentDidMount() {
         const { selectedTag, getTag } = this.props
+
         if (!selectedTag.id) {
             getTag()
         }
@@ -23,6 +24,7 @@ class TagPageContainer extends Component {
         const { tags, getTag, location } = this.props
         const isTagsChanged = prevProps.tags.length !== tags.length
         const isLocationChanged = prevProps.location.pathname !== location.pathname
+
         if (isTagsChanged || isLocationChanged) {
             getTag()
         }
@@ -30,6 +32,7 @@ class TagPageContainer extends Component {
 
     render() {
         const { selectedTag } = this.props
+
         return (
             <Tag tag={selectedTag} />
         )
@@ -38,11 +41,11 @@ class TagPageContainer extends Component {
 
 const mapStateToProps = ({ selectedTag, tags }) => ({
     selectedTag,
-    tags
+    tags,
 })
 
 const mapDispatchToProps = {
-    getTag
+    getTag,
 }
 
 export default connect(

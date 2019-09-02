@@ -5,11 +5,12 @@ import { selectPostCollection } from 'selectors'
 
 const mapStateToProps = state => {
     const posts = selectPostCollection(state)
+
     return { posts }
 }
 
 const mapDispatchToProps = {
-    getPosts
+    getPosts,
 }
 
 export default connect(

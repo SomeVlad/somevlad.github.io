@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { H1 } from 'ui'
 import {
-    renderNodeAsComponent
+    renderNodeAsComponent,
 } from 'helpers'
 import styles from './style.module.css'
 
 class Post extends Component {
     static propTypes = {
         heading: PropTypes.string,
-        contents: PropTypes.array
+        contents: PropTypes.array,
     }
 
     render() {
         const { heading, contents } = this.props
+
         if (!contents) {
             return 'loading...'
         }

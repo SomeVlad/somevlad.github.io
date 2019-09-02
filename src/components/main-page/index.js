@@ -5,7 +5,7 @@ import { Posts } from 'components'
 export class MainPage extends Component {
     static propTypes = {
         posts: PropTypes.object,
-        getPosts: PropTypes.func
+        getPosts: PropTypes.func,
     }
 
     componentDidMount() {
@@ -14,6 +14,7 @@ export class MainPage extends Component {
 
     render() {
         const { posts } = this.props
+
         return (
             <Posts posts={posts} />
         )

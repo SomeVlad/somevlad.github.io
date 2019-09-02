@@ -1,11 +1,11 @@
 import {
-    POSTS_GET_SUCCESS
+    POSTS_GET_SUCCESS,
 } from 'actions'
-import {createReducer} from 'helpers'
+import { createReducer } from 'helpers'
 
 const INITIAL_STATE = {
     postIds: [],
-    postCollection: []
+    postCollection: [],
 }
 
 export default createReducer(INITIAL_STATE, {
@@ -14,7 +14,7 @@ export default createReducer(INITIAL_STATE, {
 
         return {
             postIds,
-            postCollection
+            postCollection,
         }
     },
 })

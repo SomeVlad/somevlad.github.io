@@ -1,7 +1,7 @@
 import {
     getYoutubeVideoIdFromString,
     capitalize,
-    getSlugFromPathname
+    getSlugFromPathname,
 } from '.'
 import { isSlugInPathname } from 'helpers/index'
 
@@ -12,14 +12,14 @@ describe('getSlugFromPathname', () => {
             'https://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
             'https://vladsamoylov.com/the-best-introductory-explanation-of-ml-ever',
             '/the-best-introductory-explanation-of-ml-ever/',
-            'the-best-introductory-explanation-of-ml-ever'
+            'the-best-introductory-explanation-of-ml-ever',
         ]
+
         validUrls.forEach(string => expect(getSlugFromPathname(string))
             .toEqual('the-best-introductory-explanation-of-ml-ever'))
     })
 
     it('returns null if has invalid input', () => {
-        expect(getSlugFromPathname(undefined)).toEqual(null)
         expect(getSlugFromPathname(null)).toEqual(null)
         expect(getSlugFromPathname(NaN)).toEqual(null)
         expect(getSlugFromPathname(0)).toEqual(null)
@@ -40,18 +40,16 @@ describe('getYoutubeVideoIdFromString', () => {
         '<object width="420" height="315"><param name="movie" value="http://www.youtube-nocookie.com/v/BGL22PTIOAM?version=3&amp,hl=en_US" /><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><embed src="http://www.youtube-nocookie.com/v/Ab25nviakcw?version=3&amp,hl=en_US" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true" /></object>',
         'http://i1.ytimg.com/vi/BGL22PTIOAM/default.jpg',
         'https://www.youtube.com/watch?v=BGL22PTIOAM&feature=g-all-xit',
-        'BGL22PTIOAM'
+        'BGL22PTIOAM',
     ]
 
     it('returns valid youtube video id from string', () => {
-        validStrings.forEach(string =>
-            expect(getYoutubeVideoIdFromString(string))
-                .toEqual('BGL22PTIOAM'))
+        validStrings.forEach(string => expect(getYoutubeVideoIdFromString(string))
+            .toEqual('BGL22PTIOAM'))
     }
     )
 
     it('returns null if has invalid input', () => {
-        expect(getYoutubeVideoIdFromString(undefined)).toEqual(null)
         expect(getYoutubeVideoIdFromString(null)).toEqual(null)
         expect(getYoutubeVideoIdFromString(NaN)).toEqual(null)
         expect(getYoutubeVideoIdFromString(0)).toEqual(null)
@@ -71,7 +69,6 @@ describe('capitalize', () => {
     )
 
     it('returns null if has invalid input', () => {
-        expect(capitalize(undefined)).toEqual(null)
         expect(capitalize(null)).toEqual(null)
         expect(capitalize(NaN)).toEqual(null)
         expect(capitalize(0)).toEqual(null)
@@ -84,7 +81,6 @@ describe('capitalize', () => {
 describe('isSlugInPathname', () => {
     it('should return false by default', () => {
         expect(isSlugInPathname(null)).toEqual(false)
-        expect(isSlugInPathname(undefined)).toEqual(false)
         expect(isSlugInPathname(NaN)).toEqual(false)
         expect(isSlugInPathname(0)).toEqual(false)
         expect(isSlugInPathname('')).toEqual(false)

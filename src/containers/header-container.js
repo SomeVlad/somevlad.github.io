@@ -7,11 +7,12 @@ import { Header, Tags } from 'components'
 class HeaderContainer extends Component {
     static propTypes = {
         tags: PropTypes.array,
-        getTags: PropTypes.func
+        getTags: PropTypes.func,
     }
 
     componentDidMount() {
         const { getTags } = this.props
+
         if (getTags) {
             getTags()
         }
@@ -19,6 +20,7 @@ class HeaderContainer extends Component {
 
     render() {
         const { tags } = this.props
+
         return (
             <Fragment>
                 <Header />
@@ -29,11 +31,11 @@ class HeaderContainer extends Component {
 }
 
 const mapStateToProps = ({ tags }) => ({
-    tags
+    tags,
 })
 
 const mapDispatchToProps = {
-    getTags
+    getTags,
 }
 
 export default connect(

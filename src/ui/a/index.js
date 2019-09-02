@@ -5,6 +5,7 @@ export const A = ({ href, children, className }) => {
     const isInternal = new URL(href).hostname === window.location.hostname
     const target = isInternal ? '_self' : '_blank'
     const rel = isInternal ? null : 'noreferrer noopener'
+
     return (
         <Fragment>
             <a
@@ -22,5 +23,5 @@ export const A = ({ href, children, className }) => {
 A.propTypes = {
     href: PropTypes.string,
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
 }

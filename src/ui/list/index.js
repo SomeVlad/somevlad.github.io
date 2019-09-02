@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class Ul extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -15,7 +15,7 @@ class Ul extends Component {
 
 class Ol extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -27,7 +27,7 @@ class Ol extends Component {
 
 class Li extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -40,5 +40,5 @@ class Li extends Component {
 export {
     Ul,
     Ol,
-    Li
+    Li,
 }

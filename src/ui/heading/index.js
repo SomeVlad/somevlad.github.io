@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class H1 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -15,7 +15,7 @@ class H1 extends Component {
 
 class H2 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -27,7 +27,7 @@ class H2 extends Component {
 
 class H3 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -39,7 +39,7 @@ class H3 extends Component {
 
 class H4 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -51,7 +51,7 @@ class H4 extends Component {
 
 class H5 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -63,7 +63,7 @@ class H5 extends Component {
 
 class H6 extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {
@@ -79,5 +79,5 @@ export {
     H3,
     H4,
     H5,
-    H6
+    H6,
 }

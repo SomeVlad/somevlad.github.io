@@ -5,5 +5,5 @@ import TagPageContainer from './tag-page-container'
 export {
     MainPageContainer,
     PostContainer,
-    TagPageContainer
+    TagPageContainer,
 }

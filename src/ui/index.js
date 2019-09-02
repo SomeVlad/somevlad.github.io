@@ -29,5 +29,5 @@ export {
     Del,
     Iframe,
     Figure,
-    Pre, Code
+    Pre, Code,
 }

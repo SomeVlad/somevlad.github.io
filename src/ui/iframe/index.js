@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 import {
     getYoutubeVideoIdFromString,
     getYoutubeThumbnailImageUrl,
-    getYoutubeVideoLink
+    getYoutubeVideoLink,
 } from 'helpers'
 import { A, Img } from 'ui'
 
@@ -24,11 +24,12 @@ const YoutubeVideoPreview = ({ id }) => (
 )
 
 YoutubeVideoPreview.propTypes = {
-    id: PropTypes.number
+    id: PropTypes.string,
 }
 
 export const Iframe = ({ src, title }) => {
     const youtubeVideoId = getYoutubeVideoIdFromString(src)
+
     return (
         <span className={cx('iframe-wrap')}>
             {youtubeVideoId ? (

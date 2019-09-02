@@ -5,6 +5,7 @@ import styles from './style.module.css'
 
 export const Img = ({ src, alt, title, sizes, srcset, className }) => {
     const imageClassNames = classNames(className, styles.img)
+
     return (
         <img
             className={imageClassNames}

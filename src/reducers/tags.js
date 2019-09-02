@@ -1,13 +1,13 @@
 import {
-    TAGS_GET_SUCCESS
+    TAGS_GET_SUCCESS,
 } from 'actions'
 
 export default (state = [], { type, payload }) => {
     switch (type) {
-    case TAGS_GET_SUCCESS:
-        return payload
+        case TAGS_GET_SUCCESS:
+            return payload
 
-    default:
-        return state
+        default:
+            return state
     }
 }

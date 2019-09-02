@@ -7,7 +7,7 @@ import './index.css'
 import {
     MainPageContainer,
     PostContainer,
-    TagPageContainer
+    TagPageContainer,
 } from 'containers'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -23,7 +23,7 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
 }
 
 ReactDOM.render(
@@ -34,7 +34,7 @@ ReactDOM.render(
                     <Route exact path='/' component={MainPageContainer} />
                     <Route path='/tags/:tag' component={TagPageContainer} />
                     <Route component={PostContainer} />
-                    {/*<Route path='/about' component={About} />*/}
+                    {/* <Route path='/about' component={About} />*/}
                 </Switch>
             </Layout>
         </Router>

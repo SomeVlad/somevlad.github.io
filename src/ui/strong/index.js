@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export class Strong extends Component {
     static propTypes = {
-        children: PropTypes.node
+        children: PropTypes.node,
     }
 
     render() {

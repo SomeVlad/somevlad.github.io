@@ -7,9 +7,11 @@ export const getYoutubeVideoIdFromString = url => {
         return null
     }
     const stringsArray = url.replace(/([><])/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
+
     if (stringsArray[2]) {
         return stringsArray[2].split(/[^0-9a-z_-]/i)[0]
     }
+
     return stringsArray[0]
 }
 
@@ -36,7 +38,7 @@ const DEFAULT_TAG_NAME = 'span'
 
 const tagToComponentLookup = {
     ...UI,
-    Fragment
+    Fragment,
 }
 
 const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
@@ -53,15 +55,18 @@ export const renderNodeAsComponent = (node, index) => {
         allow,
         allowfullscreen,
         sizes,
-        srcset
+        srcset,
     } = node
+
     if (!tagToComponentLookup[capitalize(tagName)]) console.log(node)
     const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
 
     let contents
+
     if (!childNodes || childNodes.length === 0) {
         contents = textContent
-    } else {
+    }
+    else {
         contents = [...childNodes].map(renderNodeAsComponent)
     }
 
@@ -73,7 +78,7 @@ export const renderNodeAsComponent = (node, index) => {
         ...allow && { allow },
         ...allowfullscreen && { allowfullscreen },
         ...sizes && { sizes },
-        ...srcset && { srcset }
+        ...srcset && { srcset },
     }
 
     return (
@@ -87,17 +92,16 @@ export const renderNodeAsComponent = (node, index) => {
 
 export const isSlugInPathname = post => getOr(null, ['slug'], post) === getSlugFromPathname(window.location.pathname)
 
-export const createReducer = (initialState, actionLookup = {}) =>
-    (state = initialState, action) => {
-        if (!action || !isString(action.type)) {
-            return state
-        }
-
-        const reducer = actionLookup[action.type]
-
-        if (!isFunction(reducer)) {
-            return state
-        }
-
-        return reducer(state, action)
+export const createReducer = (initialState, actionLookup = {}) => (state = initialState, action) => {
+    if (!action || !isString(action.type)) {
+        return state
     }
+
+    const reducer = actionLookup[action.type]
+
+    if (!isFunction(reducer)) {
+        return state
+    }
+
+    return reducer(state, action)
+}

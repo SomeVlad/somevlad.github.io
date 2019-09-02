@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
 import { PostPreview } from 'components'
 
@@ -12,10 +12,11 @@ class Posts extends Component {
                 link: PropTypes.string,
                 heading: PropTypes.string,
             })
-        )}
+        ) }
 
     render() {
         const { posts } = this.props
+
         return (
             <div>
                 {Object.values(posts).map(post => (

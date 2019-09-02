@@ -6,7 +6,7 @@ import { Post, Page404 } from 'components'
 import {
     selectLoadingPosts,
     selectPostCollection,
-    selectSelectedPost
+    selectSelectedPost,
 } from 'selectors'
 
 class PostContainer extends Component {
@@ -14,7 +14,7 @@ class PostContainer extends Component {
         posts: PropTypes.object,
         getPosts: PropTypes.func,
         post: PropTypes.object,
-        isLoadingPosts: PropTypes.bool
+        isLoadingPosts: PropTypes.bool,
     }
 
     componentDidMount() {
@@ -50,12 +50,12 @@ const mapStateToProps = state => {
     return ({
         post,
         posts,
-        isLoadingPosts
+        isLoadingPosts,
     })
 }
 
 const mapDispatchToProps = {
-    getPosts
+    getPosts,
 }
 
 export default connect(
