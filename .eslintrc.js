@@ -1,17 +1,17 @@
 module.exports = {
     env: {
-        'browser': true,
-        'es6': true,
+        browser: true,
+        es6: true,
         'jest/globals': true,
-        'node': true
+        node: true
     },
     extends: [
         'eslint:recommended',
         'plugin:react/recommended'
     ],
     globals: {
-        'Atomics': 'readonly',
-        'SharedArrayBuffer': 'readonly'
+        Atomics: 'readonly',
+        SharedArrayBuffer: 'readonly'
     },
     parser: 'babel-eslint',
     parserOptions: {
@@ -21,9 +21,7 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module'
     },
-    plugins: [
-        'react', 'jest'
-    ],
+    plugins: ['react', 'jest'],
     rules: {
         indent: [
             'error', 4,
@@ -44,13 +42,13 @@ module.exports = {
         'default-case': 'error',
         'no-undefined': 'error',
         'no-use-before-define': 'error',
-        'array-bracket-newline': ['error', { 'multiline': true }],
-        'array-bracket-spacing': ['error', 'always', { 'singleValue': false }],
+        'array-bracket-newline': ['error', { multiline: true }],
+        'array-bracket-spacing': ['error', 'always', { singleValue: false }],
         'block-spacing': 'error',
         'brace-style': ['error', 'stroustrup'],
         camelcase: 'error',
         'comma-dangle': ['error', 'always-multiline'],
-        'comma-spacing': ['error', { 'before': false, 'after': true }],
+        'comma-spacing': ['error', { before: false, after: true }],
         'comma-style': ['error', 'last'],
         'computed-property-spacing': ['error', 'never'],
         'eol-last': ['error', 'always'],
@@ -60,11 +58,10 @@ module.exports = {
         'key-spacing': ['error', {
             beforeColon: false,
             afterColon: true,
-            mode: 'strict',
-
+            mode: 'strict'
         }],
-        'keyword-spacing': ['error', { 'before': true, 'after': true }],
-        'no-multiple-empty-lines': ['error', { 'max': 1 }],
+        'keyword-spacing': ['error', { before: true, after: true }],
+        'no-multiple-empty-lines': ['error', { max: 1 }],
         'no-negated-condition': 'error',
         'no-nested-ternary': 'error',
         'no-unneeded-ternary': 'error',
@@ -77,7 +74,7 @@ module.exports = {
         'no-useless-constructor': 'error',
         'no-useless-computed-key': 'error',
         'no-duplicate-imports': 'error',
-        'arrow-spacing': ['error', { 'before': true, 'after': true }],
+        'arrow-spacing': ['error', { before: true, after: true }],
         'arrow-parens': ['error', 'as-needed'],
         'arrow-body-style': ['error', 'as-needed'],
         'spaced-comment': ['error', 'always'],
