@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 
 export const A = ({ href, children, className }) => {
     const isInternal = new URL(href).hostname === window.location.hostname

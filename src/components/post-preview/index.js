@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { H1 } from 'ui'
 import {

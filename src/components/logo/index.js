@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styles from './style.module.css'
+import { getRandomNumberWithinRange } from 'helpers'
 
 const LOGO_RERENDER_INTERVAL = 5000
 
-const getAlternateLetters = () => `0${(Math.floor(Math.random() * 17) + 1)}`.slice(-2)
-const getTextTransform = () => [ 'capitalize', 'lowercase', 'uppercase' ][Math.floor(Math.random() * 3)]
+const getAlternateLetters = () => `0${getRandomNumberWithinRange({ min: 1, max: 18 })}`.slice(-2)
+const getTextTransform = () => [ 'capitalize', 'lowercase', 'uppercase' ][getRandomNumberWithinRange({ max: 2 })]
 
 export class Logo extends Component {
     state = {

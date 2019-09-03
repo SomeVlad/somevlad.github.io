@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react'
+import * as PropTypes from 'prop-types'
 import { H1 } from 'ui'
 import {
     renderNodeAsComponent,
 } from 'helpers'
 import styles from './style.module.css'
+import { ScrollToTop } from '../dynamic-scroll-to-top'
 
 class Post extends Component {
     static propTypes = {
@@ -15,15 +16,14 @@ class Post extends Component {
     render() {
         const { heading, contents } = this.props
 
-        if (!contents) {
-            return 'loading...'
-        }
-
         return (
-            <article className={styles.article}>
-                <H1>{heading}</H1>
-                {contents.map(renderNodeAsComponent)}
-            </article>
+            <Fragment>
+                <article className={styles.article}>
+                    <H1>{heading}</H1>
+                    {contents.map(renderNodeAsComponent)}
+                </article>
+                <ScrollToTop />
+            </Fragment>
         )
     }
 }

@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import { getTags } from 'actions'
 import { Header, Tags } from 'components'
 

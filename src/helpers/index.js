@@ -105,3 +105,11 @@ export const createReducer = (initialState, actionLookup = {}) => (state = initi
 
     return reducer(state, action)
 }
+
+/**
+ * Returns random number within range
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+export const getRandomNumberWithinRange = ({ min = 0, max = 1 }) => Math.floor(Math.random() * (max - min)) + min

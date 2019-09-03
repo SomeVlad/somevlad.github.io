@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import { getPosts } from 'actions'
 import { Post, Page404 } from 'components'
 import {

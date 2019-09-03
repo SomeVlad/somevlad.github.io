@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './style.module.css'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import {
     getYoutubeVideoIdFromString,
