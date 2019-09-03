@@ -1,30 +1,32 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import * as PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import configureStore from './store'
-import './index.css'
 import {
     MainPageContainer,
     PostContainer,
     TagPageContainer,
 } from 'containers'
+import { Layout } from 'components'
 import * as serviceWorker from './serviceWorker'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HeaderContainer from 'containers/header-container'
+import './index.css'
 
 const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router onUpdate={() => window.scrollTo(0, 0)} >
-            <HeaderContainer />
-            <Switch>
-                <Route exact path='/' component={MainPageContainer} />
-                <Route path='/tags/:tag' component={TagPageContainer} />
-                <Route component={PostContainer} />
-                {/* <Route path='/about' component={About} />*/}
-            </Switch>
+        <Router onUpdate={() => window.scrollTo(0, 0)}>
+            <Layout>
+                <HeaderContainer />
+                <Switch>
+                    <Route exact path='/' component={MainPageContainer} />
+                    <Route path='/tags/:tag' component={TagPageContainer} />
+                    <Route component={PostContainer} />
+                    {/* <Route path='/about' component={About} />*/}
+                </Switch>
+            </Layout>
         </Router>
     </Provider>,
     document.getElementById('root')

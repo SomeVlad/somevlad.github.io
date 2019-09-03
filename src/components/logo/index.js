@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './style.module.css'
 import { getRandomNumberWithinRange } from 'helpers'
 
-const LOGO_RERENDER_INTERVAL = 5000
+const LOGO_RERENDER_INTERVAL = 1000
 
-const getAlternateLetters = () => `0${getRandomNumberWithinRange({ min: 1, max: 18 })}`.slice(-2)
-const getTextTransform = () => [ 'capitalize', 'lowercase', 'uppercase' ][getRandomNumberWithinRange({ max: 2 })]
+const getAlternateLetters = () => `0${getRandomNumberWithinRange({ min: 1, max: 15 })}`.slice(-2)
+const getTextTransform = () => ['capitalize', 'lowercase', 'uppercase'][getRandomNumberWithinRange({ max: 2 })]
 
 export class Logo extends Component {
     state = {
-        fontFeatureSettings: `'ss${getAlternateLetters()}' 1`,
+        fontFeatureSettings: `'ss${getAlternateLetters()}' on`,
         textTransform: getTextTransform(),
         interval: null,
     }
@@ -17,7 +18,7 @@ export class Logo extends Component {
     componentDidMount() {
         this.setState({
             interval: setInterval(() => this.setState({
-                fontFeatureSettings: `'ss${getAlternateLetters()}' 1`,
+                fontFeatureSettings: `'ss${getAlternateLetters()}' on`,
                 textTransform: getTextTransform(),
             }), LOGO_RERENDER_INTERVAL),
         })
@@ -31,11 +32,13 @@ export class Logo extends Component {
         const { fontFeatureSettings, textTransform } = this.state
 
         return (
-            <h1
-                className={styles.root}
-                style={{ fontFeatureSettings, textTransform }}>
-                Vlad Samoylov
-            </h1>
+            <Link to='/' className={styles.link}>
+                <h1
+                    className={styles.logo}
+                    style={{ fontFeatureSettings, textTransform }}>
+                    Vlad Samoylov
+                </h1>
+            </Link>
         )
     }
 }

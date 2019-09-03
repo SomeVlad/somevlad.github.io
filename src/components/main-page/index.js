@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
-import { Posts } from 'components'
+import { PostPreview } from 'components'
 
 export class MainPage extends Component {
     static propTypes = {
-        posts: PropTypes.object,
+        posts: PropTypes.objectOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                slug: PropTypes.string,
+                contents: PropTypes.array,
+                link: PropTypes.string,
+                heading: PropTypes.string,
+                date: PropTypes.string,
+            })
+        ),
+        postIds: PropTypes.arrayOf(PropTypes.number),
         getPosts: PropTypes.func,
     }
 
@@ -13,10 +23,8 @@ export class MainPage extends Component {
     }
 
     render() {
-        const { posts } = this.props
+        const { posts, postIds } = this.props
 
-        return (
-            <Posts posts={posts} />
-        )
+        return postIds.map(id => <PostPreview key={id} {...posts[id]} />)
     }
 }

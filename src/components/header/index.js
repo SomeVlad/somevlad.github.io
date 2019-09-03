@@ -1,14 +1,9 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { Logo } from 'components'
+import styles from './style.module.css'
 
 export const Header = () => (
-    <Fragment>
-        <Link to='/'><Logo /></Link>
-        <ul>
-            <li>
-                <Link to='/about'>about me</Link>
-            </li>
-        </ul>
-    </Fragment>
+    <header className={styles.root}>
+        <Logo />
+    </header>
 )

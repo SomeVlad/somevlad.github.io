@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { keys, size } from 'lodash/fp'
 import * as PropTypes from 'prop-types'
 import { getPosts } from 'actions'
 import { Post, Page404 } from 'components'
@@ -20,7 +21,7 @@ class PostContainer extends Component {
     componentDidMount() {
         const { posts, getPosts } = this.props
 
-        if (posts.length === 0) {
+        if (size(keys(posts)) === 0) {
             getPosts()
         }
     }

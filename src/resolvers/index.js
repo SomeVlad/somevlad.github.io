@@ -12,11 +12,11 @@ const parseFromStringAsText = content => [
 ]
 
 const getParsedContents = pipe([
-    getOr('', [ 'content', 'rendered' ]),
+    getOr('', ['content', 'rendered']),
     parseFromStringAsText,
 ])
 
-const getHeading = getOr('', [ 'title', 'rendered' ])
+const getHeading = getOr('', ['title', 'rendered'])
 
 const setParsedContents = post => set(['contents'], getParsedContents(post), post)
 
@@ -31,6 +31,7 @@ const processPost = pipe([
         'contents',
         'link',
         'slug',
+        'date',
     ]),
 ])
 
@@ -38,7 +39,7 @@ export const resolvePosts = async () => {
     const response = await postsRequest()
     const processedPosts = map(processPost, response)
 
-    const [ postIds, postCollection ] = normalizePosts(processedPosts)
+    const [postIds, postCollection] = normalizePosts(processedPosts)
 
     return { postIds, postCollection }
 }

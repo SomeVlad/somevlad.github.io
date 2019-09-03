@@ -43,7 +43,7 @@ module.exports = {
         'no-undefined': 'error',
         'no-use-before-define': 'error',
         'array-bracket-newline': ['error', { multiline: true }],
-        'array-bracket-spacing': ['error', 'always', { singleValue: false }],
+        'array-bracket-spacing': ['error', 'never'],
         'block-spacing': 'error',
         'brace-style': ['error', 'stroustrup'],
         camelcase: 'error',

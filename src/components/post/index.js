@@ -5,7 +5,7 @@ import {
     renderNodeAsComponent,
 } from 'helpers'
 import styles from './style.module.css'
-import { ScrollToTop } from '../dynamic-scroll-to-top'
+import { ScrollToTop } from 'components'
 
 class Post extends Component {
     static propTypes = {

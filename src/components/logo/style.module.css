@@ -1,3 +1,10 @@
-.root {
+.logo {
     font-family: var(--xprmntl-font);
+    font-size: 3rem;
+    margin: 0;
+    display: inline;
+}
+
+.link:visited {
+    color: inherit;
 }

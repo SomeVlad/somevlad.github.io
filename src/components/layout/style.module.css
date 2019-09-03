@@ -1,0 +1,9 @@
+.root {
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 1024px) {
+    .root {
+        max-width: 43rem;
+    }
+}

@@ -1,8 +1,13 @@
+import { size, keys } from 'lodash/fp'
 import {
     tagsRequest,
 } from 'requests'
 import { getSlugFromPathname } from 'helpers'
-import { resolvePosts } from '../resolvers'
+import { resolvePosts } from 'resolvers'
+import {
+    selectPostCollection,
+    selectPosts,
+} from 'selectors'
 
 export const POSTS_GET = 'POSTS_GET'
 export const POSTS_GET_SUCCESS = 'POSTS_GET_SUCCESS'
@@ -16,10 +21,20 @@ export const TAG_GET = 'TAG_GET'
 export const TAG_GET_SUCCESS = 'TAG_GET_SUCCESS'
 export const TAG_GET_FAILURE = 'TAG_GET_FAILURE'
 
-export const getPosts = () => dispatch => {
+export const getPosts = () => (dispatch, getState) => {
     dispatch({
         type: POSTS_GET,
     })
+
+    const state = getState()
+    const postCollection = selectPostCollection(state)
+
+    if (size(keys(postCollection)) > 0) {
+        return dispatch({
+            type: POSTS_GET_SUCCESS,
+            payload: selectPosts(state),
+        })
+    }
 
     return resolvePosts()
         .then(posts => dispatch({

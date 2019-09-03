@@ -1,6 +1,7 @@
 import React from 'react'
 import * as PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import styles from './style.module.css'
 
 const Tag = ({ id, name, slug }) => (
     <span key={id}>
@@ -19,7 +20,7 @@ Tag.propTypes = {
 }
 
 export const Tags = ({ tags }) => (
-    <div>{tags.map(Tag)}</div>
+    <div className={styles.root}>{tags.map(Tag)}</div>
 )
 
 Tags.propTypes = {

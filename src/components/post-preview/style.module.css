@@ -1,6 +1,9 @@
 .article {
     position: relative;
     border: 2px solid var(--color-black);
-    margin: 20px;
     padding: 0 15px;
+}
+
+.article + .article {
+    margin-top: 2rem;
 }

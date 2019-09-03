@@ -58,7 +58,8 @@ export const renderNodeAsComponent = (node, index) => {
         srcset,
     } = node
 
-    if (!tagToComponentLookup[capitalize(tagName)]) console.log(node)
+    // eslint-disable-next-line no-console
+    if (!tagToComponentLookup[capitalize(tagName)]) console.warn(node)
     const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
 
     let contents
@@ -112,4 +113,4 @@ export const createReducer = (initialState, actionLookup = {}) => (state = initi
  * @param max
  * @returns {number}
  */
-export const getRandomNumberWithinRange = ({ min = 0, max = 1 }) => Math.floor(Math.random() * (max - min)) + min
+export const getRandomNumberWithinRange = ({ min = 0, max = 1 }) => Math.round(Math.random() * (max - min)) + min
