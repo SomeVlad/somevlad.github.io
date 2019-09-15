@@ -9,7 +9,6 @@ export class MainPage extends Component {
                 id: PropTypes.number,
                 slug: PropTypes.string,
                 contents: PropTypes.array,
-                link: PropTypes.string,
                 heading: PropTypes.string,
                 date: PropTypes.string,
             })

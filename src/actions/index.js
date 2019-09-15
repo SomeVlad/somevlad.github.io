@@ -1,13 +1,10 @@
 import { size, keys } from 'lodash/fp'
-import {
-    tagsRequest,
-} from 'requests'
-import { getSlugFromPathname } from 'helpers'
-import { resolvePosts } from 'resolvers'
+import { resolvePosts, resolveTags } from 'resolvers'
 import {
     selectPostCollection,
     selectPosts,
-} from 'selectors'
+} from 'selectors/posts'
+import { selectTagCollection, selectTags } from 'selectors/tags'
 
 export const POSTS_GET = 'POSTS_GET'
 export const POSTS_GET_SUCCESS = 'POSTS_GET_SUCCESS'
@@ -16,10 +13,6 @@ export const POSTS_GET_FAILURE = 'POSTS_GET_FAILURE'
 export const TAGS_GET = 'TAGS_GET'
 export const TAGS_GET_SUCCESS = 'TAGS_GET_SUCCESS'
 export const TAGS_GET_FAILURE = 'TAGS_GET_FAILURE'
-
-export const TAG_GET = 'TAG_GET'
-export const TAG_GET_SUCCESS = 'TAG_GET_SUCCESS'
-export const TAG_GET_FAILURE = 'TAG_GET_FAILURE'
 
 export const getPosts = () => (dispatch, getState) => {
     dispatch({
@@ -52,16 +45,17 @@ export const getTags = () => (dispatch, getState) => {
         type: TAGS_GET,
     })
 
-    const { tags } = getState()
+    const state = getState()
+    const tagCollection = selectTagCollection(state)
 
-    if (tags.length > 0) {
+    if (size(keys(tagCollection)) > 0) {
         return dispatch({
             type: TAGS_GET_SUCCESS,
-            payload: tags,
+            payload: selectTags(state),
         })
     }
 
-    return tagsRequest()
+    return resolveTags()
         .then(tags => dispatch({
             type: TAGS_GET_SUCCESS,
             payload: tags,
@@ -70,25 +64,4 @@ export const getTags = () => (dispatch, getState) => {
             type: TAGS_GET_FAILURE,
             payload: error,
         }))
-}
-
-export const getTag = () => (dispatch, getState) => {
-    dispatch({
-        type: TAG_GET,
-    })
-
-    const { tags } = getState()
-    const slugFromPathname = getSlugFromPathname(window.location.pathname)
-    const tag = tags.find(({ slug }) => slug === slugFromPathname)
-
-    if (tag) {
-        return dispatch({
-            type: TAG_GET_SUCCESS,
-            payload: tag,
-        })
-    }
-
-    return dispatch({
-        type: TAG_GET_FAILURE,
-    })
 }

@@ -5,7 +5,7 @@ import { createReducer } from 'helpers'
 
 const INITIAL_STATE = {
     postIds: [],
-    postCollection: [],
+    postCollection: {},
 }
 
 export default createReducer(INITIAL_STATE, {

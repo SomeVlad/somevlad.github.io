@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { keys, size } from 'lodash/fp'
+import { keys, size, getOr } from 'lodash/fp'
 import * as PropTypes from 'prop-types'
 import { getPosts } from 'actions'
 import { Post, Page404 } from 'components'
 import {
-    selectLoadingPosts,
     selectPostCollection,
     selectSelectedPost,
-} from 'selectors'
+} from 'selectors/posts'
+import {
+    selectLoadingPosts,
+} from 'selectors/loading'
 
 class PostContainer extends Component {
     static propTypes = {
         posts: PropTypes.object,
-        getPosts: PropTypes.func,
         post: PropTypes.object,
         isLoadingPosts: PropTypes.bool,
+        getPosts: PropTypes.func,
     }
 
     componentDidMount() {
@@ -43,8 +45,9 @@ class PostContainer extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    const post = selectSelectedPost(state)
+const mapStateToProps = (state, { match }) => {
+    const selectedPostInSlug = getOr(null, ['params', 'post'])(match)
+    const post = selectSelectedPost(selectedPostInSlug)(state)
     const posts = selectPostCollection(state)
     const isLoadingPosts = selectLoadingPosts(state)
 

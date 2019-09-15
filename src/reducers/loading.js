@@ -4,7 +4,7 @@ import {
     POSTS_GET_FAILURE,
     TAGS_GET,
     TAGS_GET_FAILURE,
-    TAG_GET_SUCCESS,
+    TAGS_GET_SUCCESS,
 } from 'actions'
 
 export default (state = null, { type }) => {
@@ -25,7 +25,7 @@ export default (state = null, { type }) => {
                 ...state,
                 loadingTags: true,
             }
-        case TAG_GET_SUCCESS:
+        case TAGS_GET_SUCCESS:
         case TAGS_GET_FAILURE:
             return {
                 ...state,

@@ -1,54 +1,50 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { getOr } from 'lodash/fp'
 import * as PropTypes from 'prop-types'
-import { Tag } from 'components'
-import { getTag } from 'actions'
+import { Tag, Page404 } from 'components'
+import {
+    selectSelectedTag,
+    selectTagCollection,
+} from 'selectors/tags'
+import { selectLoadingTags } from 'selectors/loading'
 
 class TagPageContainer extends Component {
     static propTypes = {
-        selectedTag: PropTypes.object,
-        getTag: PropTypes.func,
-        tags: PropTypes.array,
-        location: PropTypes.object,
-    }
-
-    componentDidMount() {
-        const { selectedTag, getTag } = this.props
-
-        if (!selectedTag.id) {
-            getTag()
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        const { tags, getTag, location } = this.props
-        const isTagsChanged = prevProps.tags.length !== tags.length
-        const isLocationChanged = prevProps.location.pathname !== location.pathname
-
-        if (isTagsChanged || isLocationChanged) {
-            getTag()
-        }
+        tags: PropTypes.object,
+        tag: PropTypes.object,
+        isLoadingTags: PropTypes.bool,
+        getTags: PropTypes.func,
     }
 
     render() {
-        const { selectedTag } = this.props
+        const { tag, isLoadingTags } = this.props
+
+        if (isLoadingTags) {
+            return 'loading...'
+        }
+
+        if (!tag) {
+            return <Page404 />
+        }
 
         return (
-            <Tag tag={selectedTag} />
+            <Tag {...tag} />
         )
     }
 }
 
-const mapStateToProps = ({ selectedTag, tags }) => ({
-    selectedTag,
-    tags,
-})
+const mapStateToProps = (state, { match }) => {
+    const selectedTagInSlug = getOr(null, ['params', 'tag'])(match)
+    const tag = selectSelectedTag(selectedTagInSlug)(state)
+    const tags = selectTagCollection(state)
+    const isLoadingTags = selectLoadingTags(state)
 
-const mapDispatchToProps = {
-    getTag,
+    return ({
+        tag,
+        tags,
+        isLoadingTags,
+    })
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TagPageContainer)
+export default connect(mapStateToProps)(TagPageContainer)

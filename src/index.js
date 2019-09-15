@@ -6,6 +6,7 @@ import configureStore from './store'
 import {
     MainPageContainer,
     PostContainer,
+    TagsContainer,
     TagPageContainer,
 } from 'containers'
 import { Layout } from 'components'
@@ -20,11 +21,11 @@ ReactDOM.render(
         <Router onUpdate={() => window.scrollTo(0, 0)}>
             <Layout>
                 <HeaderContainer />
+                <TagsContainer />
                 <Switch>
                     <Route exact path='/' component={MainPageContainer} />
                     <Route path='/tags/:tag' component={TagPageContainer} />
-                    <Route component={PostContainer} />
-                    {/* <Route path='/about' component={About} />*/}
+                    <Route path='/posts/:post' component={PostContainer} />
                 </Switch>
             </Layout>
         </Router>

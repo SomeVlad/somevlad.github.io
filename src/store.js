@@ -3,8 +3,8 @@ import thunk from 'redux-thunk'
 import rootReducer from 'reducers'
 
 const INITIAL_STATE = {
-    posts: [],
-    tags: [],
+    posts: {},
+    tags: {},
     errors: null,
 }
 

@@ -1,33 +1,7 @@
 import {
     getYoutubeVideoIdFromString,
     capitalize,
-    getSlugFromPathname,
 } from '.'
-import { isSlugInPathname } from 'helpers/index'
-
-describe('getSlugFromPathname', () => {
-    it('returns valid slug with valid input', () => {
-        const validUrls = [
-            'http://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
-            'https://vladsamoylov.com/2018/08/26/the-best-introductory-explanation-of-ml-ever/',
-            'https://vladsamoylov.com/the-best-introductory-explanation-of-ml-ever',
-            '/the-best-introductory-explanation-of-ml-ever/',
-            'the-best-introductory-explanation-of-ml-ever',
-        ]
-
-        validUrls.forEach(string => expect(getSlugFromPathname(string))
-            .toEqual('the-best-introductory-explanation-of-ml-ever'))
-    })
-
-    it('returns null if has invalid input', () => {
-        expect(getSlugFromPathname(null)).toEqual(null)
-        expect(getSlugFromPathname(NaN)).toEqual(null)
-        expect(getSlugFromPathname(0)).toEqual(null)
-        expect(getSlugFromPathname('')).toEqual(null)
-        expect(getSlugFromPathname(123)).toEqual(null)
-        expect(getSlugFromPathname()).toEqual(null)
-    })
-})
 
 describe('getYoutubeVideoIdFromString', () => {
     const validStrings = [
@@ -78,12 +52,3 @@ describe('capitalize', () => {
     })
 })
 
-describe('isSlugInPathname', () => {
-    it('should return false by default', () => {
-        expect(isSlugInPathname(null)).toEqual(false)
-        expect(isSlugInPathname(NaN)).toEqual(false)
-        expect(isSlugInPathname(0)).toEqual(false)
-        expect(isSlugInPathname('')).toEqual(false)
-        expect(isSlugInPathname()).toEqual(false)
-    })
-})

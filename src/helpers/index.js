@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { getOr, isString, isFunction } from 'lodash/fp'
+import { isString, isFunction } from 'lodash/fp'
 import * as UI from 'ui'
 
 export const getYoutubeVideoIdFromString = url => {
@@ -24,14 +24,6 @@ export const capitalize = string => {
     }
 
     return string[0].toUpperCase() + string.slice(1).toLowerCase()
-}
-
-export const getSlugFromPathname = pathname => {
-    if (!pathname || typeof pathname !== 'string') {
-        return null
-    }
-
-    return pathname.split('/').filter(Boolean).pop()
 }
 
 const DEFAULT_TAG_NAME = 'span'
@@ -90,8 +82,6 @@ export const renderNodeAsComponent = (node, index) => {
         </Component>
     )
 }
-
-export const isSlugInPathname = post => getOr(null, ['slug'], post) === getSlugFromPathname(window.location.pathname)
 
 export const createReducer = (initialState, actionLookup = {}) => (state = initialState, action) => {
     if (!action || !isString(action.type)) {

@@ -22,23 +22,21 @@ class PostPreview extends Component {
     static propTypes = {
         heading: PropTypes.string,
         contents: PropTypes.array,
-        link: PropTypes.string,
+        slug: PropTypes.string,
     }
 
     render() {
-        const { heading, contents, link } = this.props
+        const { heading, contents, slug } = this.props
 
         if (!contents) {
             return 'loading...'
         }
 
-        const url = new URL(link).pathname
-
         return (
             <article key={heading} className={styles.article}>
                 <PostTitle
                     heading={heading}
-                    url={url} />
+                    url={`/posts/${slug}`} />
                 {contents.map(renderNodeAsComponent)}
             </article>
         )

@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
 import { MainPage } from 'components/main-page'
-import { selectPostCollection, selectPostIds } from 'selectors'
+import {
+    selectPostCollection,
+    selectPostIds,
+} from 'selectors/posts'
 
 const mapStateToProps = state => ({
     posts: selectPostCollection(state),
