@@ -5,20 +5,29 @@ import * as PropTypes from 'prop-types'
 import { Tag, Page404 } from 'components'
 import {
     selectSelectedTag,
-    selectTagCollection,
 } from 'selectors/tags'
 import { selectLoadingTags } from 'selectors/loading'
+import {
+    getPosts,
+} from 'actions'
+import { selectPostCollectionByTagId } from 'selectors/posts'
 
 class TagPageContainer extends Component {
     static propTypes = {
-        tags: PropTypes.object,
         tag: PropTypes.object,
         isLoadingTags: PropTypes.bool,
-        getTags: PropTypes.func,
+        postsFilteredByTag: PropTypes.array,
+        getPosts: PropTypes.func,
+    }
+
+    componentDidMount() {
+        const { getPosts } = this.props
+
+        getPosts()
     }
 
     render() {
-        const { tag, isLoadingTags } = this.props
+        const { tag, isLoadingTags, postsFilteredByTag } = this.props
 
         if (isLoadingTags) {
             return 'loading...'
@@ -29,7 +38,7 @@ class TagPageContainer extends Component {
         }
 
         return (
-            <Tag {...tag} />
+            <Tag {...tag} posts={postsFilteredByTag} />
         )
     }
 }
@@ -37,14 +46,20 @@ class TagPageContainer extends Component {
 const mapStateToProps = (state, { match }) => {
     const selectedTagInSlug = getOr(null, ['params', 'tag'])(match)
     const tag = selectSelectedTag(selectedTagInSlug)(state)
-    const tags = selectTagCollection(state)
-    const isLoadingTags = selectLoadingTags(state)
+    const selectedTagId = getOr(null, ['id'], tag)
 
     return ({
         tag,
-        tags,
-        isLoadingTags,
+        isLoadingTags: selectLoadingTags(state),
+        postsFilteredByTag: selectPostCollectionByTagId(selectedTagId)(state),
     })
 }
 
-export default connect(mapStateToProps)(TagPageContainer)
+const mapDispatchToProps = ({
+    getPosts,
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(TagPageContainer)

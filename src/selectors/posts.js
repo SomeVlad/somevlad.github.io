@@ -1,4 +1,4 @@
-import { getOr, pipe, find } from 'lodash/fp'
+import { getOr, pipe, find, filter } from 'lodash/fp'
 
 export const selectPosts = getOr({}, ['posts'])
 
@@ -17,3 +17,7 @@ export const selectSelectedPost = slug => pipe([
     find(post => post.slug === slug),
 ])
 
+export const selectPostCollectionByTagId = tagId => pipe([
+    selectPostCollection,
+    filter(post => post.tags.includes(tagId)),
+])

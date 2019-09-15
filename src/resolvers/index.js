@@ -39,6 +39,7 @@ const processPost = pipe([
         'contents',
         'slug',
         'date',
+        'tags',
     ]),
 ])
 

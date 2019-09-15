@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
+import * as PropTypes from 'prop-types'
+import { PostPreview } from 'components/post-preview'
 
-class Tag extends Component {
-    render() {
-        return (
-            <article>
-                {JSON.stringify(this.props)}
-            </article>
-        )
-    }
+export const Tag = ({ posts }) => (
+    posts.map(post => <PostPreview key={post.id} {...post} />)
+)
+
+Tag.propTypes = {
+    posts: PropTypes.array,
 }
-
-export { Tag }

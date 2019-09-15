@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
-import { MainPage } from 'components/main-page'
+import { PostPreviews } from 'components'
 import {
     selectPostCollection,
     selectPostIds,
@@ -18,4 +18,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MainPage)
+)(PostPreviews)

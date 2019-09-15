@@ -18,7 +18,7 @@ const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router onUpdate={() => window.scrollTo(0, 0)}>
+        <Router>
             <Layout>
                 <HeaderContainer />
                 <TagsContainer />
