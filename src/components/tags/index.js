@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 
 const Tag = ({ id, name, slug, count }) => (
-    <span key={id}>
-        <Link
+    <span key={id} className={styles.link}>
+        <NavLink
+            activeClassName={styles.active}
             to={`/tags/${slug}`}>
             {name}
-        </Link>
+        </NavLink>
         <sup>{count}</sup>
-        {' '}
     </span>
 )
 

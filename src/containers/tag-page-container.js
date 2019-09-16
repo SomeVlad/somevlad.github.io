@@ -27,7 +27,11 @@ class TagPageContainer extends Component {
     }
 
     render() {
-        const { tag, isLoadingTags, postsFilteredByTag } = this.props
+        const {
+            tag,
+            isLoadingTags,
+            postsFilteredByTag,
+        } = this.props
 
         if (isLoadingTags) {
             return 'loading...'
