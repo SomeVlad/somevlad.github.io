@@ -18,7 +18,7 @@ const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Layout>
                 <HeaderContainer />
                 <TagsContainer />
