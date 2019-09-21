@@ -5,6 +5,10 @@
     display: inline;
 }
 
+.link {
+    color: var(--color-text)
+}
+
 .link:visited {
     color: inherit;
 }
