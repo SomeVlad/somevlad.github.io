@@ -1,6 +1,6 @@
 {
   "name": "new-wp-frontend",
-  "homepage" : "http://somevlad.github.io/crawp",
+  "homepage": "http://somevlad.github.io/crawp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,9 @@
     "eject": "react-scripts eject",
     "serve": "serve -s build",
     "lint": "eslint src --ext=js",
-    "check": "npm run lint && npm run test"
+    "check": "npm run lint && npm run test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +37,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-plugin-jest": "22.16.0"
+    "eslint-plugin-jest": "22.16.0",
+    "gh-pages": "2.1.1"
   }
 }
