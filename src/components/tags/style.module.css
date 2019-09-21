@@ -2,9 +2,24 @@
     margin-bottom: 1rem;
 }
 
-.link + .link:before {
-    content: ' | '
+.list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.list-item {
+    display: inline-block;
+}
+
+.list-item:not(:last-of-type) {
+    margin-right: 5px;
+}
+
+.link {
+    text-decoration: none;
+}
+
 .active,
 .active:hover,
 .active:active,
