@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getRandomNumberWithinRange } from 'helpers'
 import styles from './style.module.css'
 
@@ -32,13 +32,17 @@ export class Logo extends Component {
         const { fontFeatureSettings, textTransform } = this.state
 
         return (
-            <Link to='/' className={styles.link}>
+            <NavLink
+                className={styles.link}
+                activeClassName={styles.active}
+                exact
+                to='/'>
                 <h1
                     className={styles.logo}
                     style={{ fontFeatureSettings, textTransform }}>
                     Vlad Samoylov
                 </h1>
-            </Link>
+            </NavLink>
         )
     }
 }

@@ -14,3 +14,18 @@
     border: 2px solid var(--color-text);
     padding: 0 15px;
 }
+
+.footer {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: baseline;
+}
+
+.footer > :not(:last-child) {
+    margin-right: 0.7rem;
+}
+
+.date {
+    color: var(--color-text-light);
+}

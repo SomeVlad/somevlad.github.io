@@ -1,7 +1,9 @@
 :root {
     --color-background: #f5f5f5;
     --color-text: #333333;
-    --color-link: #556677;
+    --color-text-light: #a7a7a7;
+    --color-tag: #556677;
+    --color-link: #0060A0;
     --color-accent: #b03000;
     --xprmntl-font:
         'xprmntl',
@@ -20,8 +22,9 @@
     :root {
         --color-background: #333333;
         --color-text: #f5f5f5;
-        --color-link: #7F99AF;
-        --color-accent: #b03000;
+        --color-link: #0085c7;
+        --color-tag: #7F99AF;
+        --color-accent: #e23300;
     }
 }
 

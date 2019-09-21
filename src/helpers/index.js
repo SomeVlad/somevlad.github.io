@@ -104,3 +104,9 @@ export const createReducer = (initialState, actionLookup = {}) => (state = initi
  * @returns {number}
  */
 export const getRandomNumberWithinRange = ({ min = 0, max = 1 }) => Math.round(Math.random() * (max - min)) + min
+
+export const formatDate = date => {
+    const dateObject = new Date(date)
+
+    return dateObject.toLocaleDateString()
+}

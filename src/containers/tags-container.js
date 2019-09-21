@@ -3,9 +3,9 @@ import { getTags } from 'actions'
 import { selectTagCollection, selectTagIds } from 'selectors/tags'
 import { Tags } from 'components/tags'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, { tagIds }) => ({
     tags: selectTagCollection(state),
-    tagIds: selectTagIds(state),
+    tagIds: tagIds || selectTagIds(state),
 })
 
 const mapDispatchToProps = {

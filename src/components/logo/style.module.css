@@ -12,3 +12,8 @@
 .link:visited {
     color: inherit;
 }
+
+.active {
+    text-decoration: none;
+    cursor: default;
+}
