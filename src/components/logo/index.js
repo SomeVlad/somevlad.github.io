@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './style.module.css'
 import { getRandomNumberWithinRange } from 'helpers'
+import styles from './style.module.css'
 
-const LOGO_RERENDER_INTERVAL = 1000
+const LOGO_RERENDER_INTERVAL = 3000
 
 const getAlternateLetters = () => `0${getRandomNumberWithinRange({ min: 1, max: 15 })}`.slice(-2)
 const getTextTransform = () => ['capitalize', 'lowercase', 'uppercase'][getRandomNumberWithinRange({ max: 2 })]

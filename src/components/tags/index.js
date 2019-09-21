@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import * as PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 
-const Tag = ({ id, name, slug, count }) => (
-    <span key={id} className={styles.link}>
+const Tag = ({ name, slug, count }) => (
+    <Fragment>
         <NavLink
+            className={styles.link}
             activeClassName={styles.active}
             to={`/tags/${slug}`}>
             {name}
         </NavLink>
         <sup>{count}</sup>
-    </span>
+    </Fragment>
 )
 
 Tag.propTypes = {
     count: PropTypes.number,
-    id: PropTypes.number,
     name: PropTypes.string,
     slug: PropTypes.string,
 }
@@ -44,7 +44,13 @@ export class Tags extends Component {
 
         return (
             <div className={styles.root}>
-                {tagIds.map(id => <Tag key={id} {...tags[id]} />)}
+                <ul className={styles.list}>
+                    {tagIds.map(id => (
+                        <li key={id} className={styles['list-item']}>
+                            <Tag {...tags[id]} />
+                        </li>
+                    ))}
+                </ul>
             </div>
         )
     }

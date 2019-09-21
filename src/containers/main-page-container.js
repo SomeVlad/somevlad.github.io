@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
-import { PostPreviews } from 'components'
+import { PostPreviewList } from 'components'
 import {
     selectPostCollection,
     selectPostIds,
@@ -18,4 +18,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PostPreviews)
+)(PostPreviewList)

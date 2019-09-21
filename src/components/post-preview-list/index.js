@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
 import { PostPreview } from 'components'
 
-export class PostPreviews extends Component {
+export class PostPreviewList extends Component {
     static propTypes = {
         posts: PropTypes.objectOf(
             PropTypes.shape({
