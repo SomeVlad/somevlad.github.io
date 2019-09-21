@@ -27,6 +27,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b master"
   },
+  "config": {
+    "ghooks": {
+      "post-update": "npm run deploy"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -38,6 +43,7 @@
   ],
   "devDependencies": {
     "eslint-plugin-jest": "22.16.0",
-    "gh-pages": "2.1.1"
+    "gh-pages": "2.1.1",
+    "ghooks": "2.0.4"
   }
 }
