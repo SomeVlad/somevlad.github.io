@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { keys, size, getOr } from 'lodash/fp'
 import * as PropTypes from 'prop-types'
 import { getPosts } from 'actions'
-import { Post, Page404 } from 'components'
+import { Page404 } from 'components/404'
+import { Post } from 'components/post'
 import {
     selectPostCollection,
     selectSelectedPost,

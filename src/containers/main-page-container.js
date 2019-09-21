@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { getPosts } from 'actions'
-import { PostPreviewList } from 'components'
+import { PostPreviewList } from 'components/post-preview-list'
 import {
     selectPostCollection,
     selectPostIds,

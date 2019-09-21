@@ -2,16 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import configureStore from './store'
-import {
-    MainPageContainer,
-    PostContainer,
-    TagsContainer,
-    TagPageContainer,
-} from 'containers'
-import { Layout } from 'components'
-import * as serviceWorker from './serviceWorker'
+import MainPageContainer from 'containers/main-page-container'
+import PostContainer from 'containers/post-container'
+import TagsContainer from 'containers/tags-container'
+import TagPageContainer from 'containers/tag-page-container'
 import HeaderContainer from 'containers/header-container'
+import { Layout } from 'components/layout'
+import configureStore from './store'
+import * as serviceWorker from './serviceWorker'
 import './index.css'
 
 const store = configureStore()

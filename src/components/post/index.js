@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react'
 import * as PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
-import { TagsContainer } from 'containers'
+import TagsContainer from 'containers/tags-container'
 import { H1 } from 'ui'
 import {
     formatDate,
     renderNodeAsComponent,
 } from 'helpers'
-import { ScrollToTop } from 'components'
+import { ScrollToTop } from 'components/dynamic-scroll-to-top'
 import styles from './style.module.css'
 
 const cx = classNames.bind(styles)

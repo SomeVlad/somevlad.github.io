@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as PropTypes from 'prop-types'
-import { PostPreview } from 'components'
+import { PostPreview } from 'components/post-preview'
 
 export class PostPreviewList extends Component {
     static propTypes = {

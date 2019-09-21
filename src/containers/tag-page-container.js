@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOr } from 'lodash/fp'
 import * as PropTypes from 'prop-types'
-import { Tag, Page404 } from 'components'
+import { Page404 } from 'components/404'
+import { Tag } from 'components/tag-page'
 import {
     selectSelectedTag,
 } from 'selectors/tags'

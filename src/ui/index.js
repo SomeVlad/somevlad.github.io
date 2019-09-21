@@ -1,33 +1,15 @@
-import { A } from './a'
-import { P } from './p'
-import { Em } from './em'
-import { Span } from './span'
-import { Ul, Ol, Li } from './list'
-import { Br } from './br'
-import { Hr } from './hr'
-import { Abbr } from './abbr'
-import { H1, H2, H3, H4, H5, H6 } from './heading'
-import { Img } from './img'
-import { Strong } from './strong'
-import { Del } from './del'
-import { Iframe } from './iframe'
-import { Figure } from './figure'
-import { Pre, Code } from './codeblock'
-
-export {
-    A,
-    P,
-    Em,
-    Span,
-    Ul, Ol, Li,
-    Br,
-    Hr,
-    Abbr,
-    H1, H2, H3, H4, H5, H6,
-    Img,
-    Strong,
-    Del,
-    Iframe,
-    Figure,
-    Pre, Code,
-}
+export { A } from './a'
+export { P } from './p'
+export { Em } from './em'
+export { Span } from './span'
+export { Ul, Ol, Li } from './list'
+export { Br } from './br'
+export { Hr } from './hr'
+export { Abbr } from './abbr'
+export { H1, H2, H3, H4, H5, H6 } from './heading'
+export { Img } from './img'
+export { Strong } from './strong'
+export { Del } from './del'
+export { Iframe } from './iframe'
+export { Figure } from './figure'
+export { Pre, Code } from './codeblock'
