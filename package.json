@@ -29,7 +29,7 @@
   },
   "config": {
     "ghooks": {
-      "post-update": "npm run deploy"
+      "post-receive": "npm run deploy"
     }
   },
   "eslintConfig": {
