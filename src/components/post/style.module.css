@@ -1,0 +1,16 @@
+.article {
+    position: relative;
+}
+
+.article + .article {
+    margin-top: 2rem;
+}
+
+.link {
+    color: var(--color-text);
+}
+
+.preview {
+    border: 2px solid var(--color-text);
+    padding: 0 15px;
+}

@@ -1,0 +1,14 @@
+.logo {
+    font-family: var(--xprmntl-font);
+    font-size: 3rem;
+    margin: 0;
+    display: inline;
+}
+
+.link {
+    color: var(--color-text)
+}
+
+.link:visited {
+    color: inherit;
+}
