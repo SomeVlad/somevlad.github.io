@@ -48,8 +48,8 @@ export const renderNodeAsComponent = (node, index) => {
         srcset,
     } = node
 
-    // eslint-disable-next-line no-console
     if (!selectComponentByTagName(tagName)) {
+        // eslint-disable-next-line no-console
         console.warn(node)
     }
     const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
