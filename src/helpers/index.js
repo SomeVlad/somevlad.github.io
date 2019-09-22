@@ -28,12 +28,10 @@ export const capitalize = string => {
 
 const DEFAULT_TAG_NAME = 'span'
 
-const tagToComponentLookup = {
+const selectComponentByTagName = tagName => ({
     ...UI,
     Fragment,
-}
-
-const selectComponentByTagName = tagName => tagToComponentLookup[capitalize(tagName)]
+}[capitalize(tagName)])
 
 export const renderNodeAsComponent = (node, index) => {
     const {
@@ -51,7 +49,9 @@ export const renderNodeAsComponent = (node, index) => {
     } = node
 
     // eslint-disable-next-line no-console
-    if (!tagToComponentLookup[capitalize(tagName)]) console.warn(node)
+    if (!selectComponentByTagName(tagName)) {
+        console.warn(node)
+    }
     const Component = selectComponentByTagName(tagName) || selectComponentByTagName(DEFAULT_TAG_NAME)
 
     let contents
